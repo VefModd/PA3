@@ -1,0 +1,24 @@
+{
+  "name": "PA3",
+  "version": "0.0.0",
+  "homepage": "https://github.com/vefmodd/PA3",
+  "authors": [
+    "Daniel Benediktsson, Jón Freysteinn Jónsson, Jörundur Jörundsson"
+  ],
+  "description": "WEPO project 3",
+  "main": "app.js",
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.14",
+    "angular-route": "~1.3.14",
+    "angular-bootstrap": "~0.12.1"
+  }
+}

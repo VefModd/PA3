@@ -1,4 +1,6 @@
 angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', 'dispatch',
         function($scope, $routeParams, $route, dispatch) {
-            $scope.studentUsername = $routeParams.studentUsername;
+            $scope.getCourses = function() {
+                // dispatch.mycourses...
+            }
         }]);

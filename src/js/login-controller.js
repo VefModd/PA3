@@ -2,7 +2,7 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', '$r
         function ($scope, $routeParams, $route, $location, dispatch) {
             $scope.login = function() {
                 if($scope.loginForm.$valid) {
-                    dispatch.login($scope.username, $scope.password).
+                    dispatch.login($scope.user.name, $scope.user.pass).
                         success(function(data, status, headers, config) {
                             console.log("success! data => ", data);
                             console.log("success! status=> ", status);

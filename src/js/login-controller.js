@@ -11,6 +11,7 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', '$r
                             $location.path('/front-page-student/' + $scope.username);
                         }
                         else {
+                            console.log("inside here!!");
                             $location.path('/front-page-teacher/' + $scope.username);
                         }
                     }).

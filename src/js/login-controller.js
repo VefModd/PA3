@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('LoginController', ['$scope', '$routeParams', '$route', '$location', 'dispatch',
-        function ($scope, $routeParams, $route, $location, dispatch) {
+angular.module('angularEvaluation').controller('LoginController', ['$scope', '$rootScope', '$routeParams', '$route', '$location', 'dispatch',
+        function ($scope,$rootScope, $routeParams, $route, $location, dispatch) {
             $scope.login = function() {
                 if($scope.loginForm.$valid) {
                     dispatch.login($scope.user.name, $scope.user.pass).
@@ -8,11 +8,13 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', '$r
                             console.log("success! status=> ", status);
                             console.log("success! headers=> ", headers);
                             console.log("success! config=> ", config);
+                            //$scope.data = data;
+                            $rootScope.data = data;
                             if(data.User.Role == 'student') {
-                                $location.path('/front-page-student/' + $scope.username);
+                                $location.path('/front-page-student');
                             }
                             else {
-                                $location.path('/front-page-teacher/' + $scope.username);
+                                $location.path('/front-page-teacher');
                             }
                         }).
                         error(function(data, status, headers, config) {

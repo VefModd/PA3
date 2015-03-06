@@ -6,11 +6,11 @@ angular.module('angularEvaluation', [ 'ngRoute', 'ui.bootstrap' ]).
                 templateUrl: 'src/html/login.html',
                 controller: 'LoginController'
             }).
-            when('/front-page-student/:studentUsername', {
+            when('/front-page-student', {
                 templateUrl: 'src/html/front-page-student.html',
                 controller: 'FrontPageStudentController'
             }).
-            when('/front-page-teacher/:teacherUsername', {
+            when('/front-page-teacher', {
                 templateUrl: 'src/html/front-page-teacher.html',
                 constroller: 'FrontPageTeacherController'
             }).

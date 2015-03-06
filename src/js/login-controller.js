@@ -7,7 +7,12 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', '$r
                         console.log("success! status=> ", status);
                         console.log("success! headers=> ", headers);
                         console.log("success! config=> ", config);
-                        $location.path('/front-page-student/' + $scope.username);
+                        if(data.User.Role == 'student') {
+                            $location.path('/front-page-student/' + $scope.username);
+                        }
+                        else {
+                            $location.path('/front-page-teacher/' + $scope.username);
+                        }
                     }).
                     error(function(data, status, headers, config) {
                         console.log("error! data=> ", data);

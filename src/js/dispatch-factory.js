@@ -1,7 +1,7 @@
 angular.module("angularEvaluation").constant("SERVER_URL", "http://dispatch.ru.is/h09/api/v1/");
 
-angular.module("angularEvaluation").factory("dispatch", 
-    function($http, SERVER_URL) {
+angular.module("angularEvaluation").factory("dispatch",
+    function($http, $rootScope, SERVER_URL) {
         return {
             login:
             function(user, pass) {
@@ -9,7 +9,12 @@ angular.module("angularEvaluation").factory("dispatch",
             },
             myCourses:
             function() {
-                return $http.get(SERVER_URL + 'my/courses');
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.get(SERVER_URL + 'my/courses', config);
             }
 
         }

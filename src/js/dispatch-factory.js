@@ -7,6 +7,7 @@ angular.module("angularEvaluation").factory("dispatch",
             function(user, pass) {
                 return $http.post(SERVER_URL + "login", {"user": user, "pass": pass});
             },
+
             myCourses:
             function() {
                 var config = {
@@ -15,7 +16,16 @@ angular.module("angularEvaluation").factory("dispatch",
                     }
                 };
                 return $http.get(SERVER_URL + 'my/courses', config);
-            }
+            },
 
+            myEvaluations:
+            function() {
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.get(SERVER_URL + 'my/evaluations', config);
+            }
         }
     });

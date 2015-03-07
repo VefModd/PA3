@@ -25,7 +25,11 @@
                 Evaluations:
             </div>
             <div class="panel-body">
-                <p>Here comes a list of evaluations</p>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                        {{ evaluation.CourseId }}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

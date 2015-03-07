@@ -11,7 +11,11 @@
                 Courses:
             </div>
             <div class="panel-body">
-                <p>Here comes a list of courses</p>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="course in courses">
+                        {{ course.Name }}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

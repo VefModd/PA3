@@ -3,8 +3,14 @@ angular.module("angularEvaluation").constant("SERVER_URL", "http://dispatch.ru.i
 angular.module("angularEvaluation").factory("dispatch", 
     function($http, SERVER_URL) {
         return {
-            login: function(user, pass) {
+            login:
+            function(user, pass) {
                 return $http.post(SERVER_URL + "login", {"user": user, "pass": pass});
+            },
+            myCourses:
+            function() {
+                return $http.get(SERVER_URL + 'my/courses');
             }
+
         }
     });

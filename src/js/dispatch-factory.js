@@ -27,5 +27,5 @@ angular.module("angularEvaluation").factory("dispatch",
                 };
                 return $http.get(SERVER_URL + 'my/evaluations', config);
             }
-        }
+        };
     });

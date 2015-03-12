@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('LoginController', ['$scope', '$rootScope', '$routeParams', '$route', '$location', 'dispatch',
-        function ($scope,$rootScope, $routeParams, $route, $location, dispatch) {
+angular.module('angularEvaluation').controller('LoginController', ['$scope', 'dispatch', '$rootScope', '$routeParams', '$location',
+        function ($scope, dispatch, $rootScope, $routeParams, $location) {
             $scope.login = function() {
                 if($scope.loginForm.$valid) {
                     dispatch.login($scope.user.name, $scope.user.pass).

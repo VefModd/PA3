@@ -1,13 +1,37 @@
 {
+  "name": "angular-evaluation",
+  "version": "1.0.0",
+  "description": "WEPO project 3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    },
   "engines": {
     "node": ">= 0.10.0"
   },
+  "repository": {
+   "type": "git",
+   "url": "https://github.com/vefmodd/PA3.git"
+ },
+ "author": "Daniel Benediktsson, Jón Freysteinn Jónsson, Jörundur Jörundsson",
+ "license": "ISC",
+ "bugs": {
+   "url": "https://github.com/vefmodd/PA3/issues"
+ },
+ "homepage": "https://github.com/vefmodd/PA3",
   "devDependencies": {
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-safari-launcher": "^0.1.1",
     "grunt": "~0.4.5",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "^0.8.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.10.1"
   }
 }

@@ -16,7 +16,30 @@
                 Basic information:
             </div>
             <div class="panel-body">
-                <p> HERE COMES BASIC INFO QUESTIONS!</p>
+                <div class="form-group">
+                    <label for="title" class="control-label">
+                        Title:
+                    </label>
+                    <input type="text"
+                        name="title"
+                        ng-model="evaluationTemplate.Title"
+                        required
+                        ng-maxlength="32"
+                        class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="introText" class="control-label">
+                        Introduction text:
+                    </label>
+                    <textarea cols="1"
+                        rows="5"
+                        name="introText"
+                        ng-model="evaluationTemplate.IntroText"
+                        required
+                        ng-maxlenght="100"
+                        class="form-control">
+                    </textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -29,7 +52,14 @@
                 Course questions:
             </div>
             <div class="panel-body">
-                <p> HERE COMES A LIST OF ALL COURSE QUESTION THAT THE TEACHER HAS ADDED!</p>
+                <ul class="list-group" ng-show="evaluationTemplate.CourseQuestions.length != 0">
+                    <li class="list-group-item" ng-repeat"courseQuestion in evaluationTemplate.CourseQuestions">
+                        {{ courseQuestion.text }}
+                    </li>
+                </ul>
+                <p ng-show="evaluationTemplate.CourseQuestions.length == 0">
+                    You still have not added any course questions to the evaluation template! Click at the button below to do so!
+                </p>
             </div>
         </div>
     </div>
@@ -37,7 +67,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <button type="button" class="btn btn-block btn-md btn-success">
+        <button type="button" class="btn btn-block btn-md btn-primary">
             Click here to add a new course question!
         </button>
         <br>
@@ -51,7 +81,14 @@
                 Teacher questions:
             </div>
             <div class="panel-body">
-                <p> HERE COMES A LIST OF ALL TEACHER QUESTIONS THAT THE TEACHER HAS ADDED! </p>
+                <ul class="list-group" ng-show="evaluationTemplate.TeacherQuestions.length != 0">
+                    <li class="list-group-item" ng-repeat"teacherQuestion in evaluationTemplate.TeacherQuestions">
+                        {{ teacherQuestion.text }}
+                    </li>
+                </ul>
+                <p ng-show="evaluationTemplate.TeacherQuestions.length == 0">
+                    You still have not added any teacher questions to the evaluation template! Click at the button below to do so!
+                </p>
             </div>
         </div>
     </div>
@@ -59,9 +96,20 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <button type="button" class="btn btn-block btn-md btn-success">
+        <button type="button" class="btn btn-block btn-md btn-primary">
             Click here to add a new teacher question!
         </button>
         <br>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <button type="button" class="btn btn-block btn-lg btn-success" ng-click="test()">
+            Finish evaluation template!
+        </button>
+        <br>
+    </div>
+</div>
+
+

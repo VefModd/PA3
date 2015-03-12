@@ -13,17 +13,15 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
     
         $scope.addCourseQuestion = function() {
             var modalInstance = $modal.open({
-                templateUrl: 'myModalContent.html',
+                //templateUrl: 'myModalContent.html',
+                templateUrl: 'src/html/modal-course-question.html',
                 controller: 'ModalCourseQuestionController',
                 size: 20
             });
 
-            console.log("between stufff");
-            /*
-            modelInstance.result.then(function() {
+            modalInstance.result.then(function() {
                 console.log("hothot");
             });
-            */
         };
 
         console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);

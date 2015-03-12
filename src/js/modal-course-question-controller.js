@@ -7,8 +7,8 @@ angular.module('angularEvaluation').controller('ModalCourseQuestionController', 
             $modalInstance.dismiss('cancel');
         };
 
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
+        $scope.finish = function () {
+            $modalInstance.close();
         };
         
 

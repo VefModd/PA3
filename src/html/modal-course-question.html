@@ -1,11 +1,26 @@
 <div>
     <div class="modal-header">
-        <p>This is a model!!"</p>
+        <h2>
+            Creating a new course question:
+        </h2>
     </div>
     <div class="modal-body">
-        <p>This is great!!!</p>
+        <form name="newCourseQuestion" novalidate ng-submit="finish()">
+            <div class="form-group">
+                <label for="questionText" class="control-label">
+                    Question text:
+                </label>
+                <input type="text"
+                    name="questionText"
+                    ng-model="question.Text"
+                    required
+                    ng-maxlength="50"
+                    class="form-control" />
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success">Finish</button>
+        <button class="btn btn-success" ng-click="finish()">Finish</button>
+        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
     </div>
 </div>

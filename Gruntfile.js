@@ -102,6 +102,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-karma');
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'watch']);
+  grunt.registerTask('default', ['jshint', 'karma', 'concat', 'uglify', 'less']);
 
 };

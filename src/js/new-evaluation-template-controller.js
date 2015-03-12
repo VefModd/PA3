@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$routeParams', '$route', 'dispatch',
-    function($scope, $routeParams, $route, dispatch) {
+angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope',
+    function($scope) {
         console.log("INSDIE NEW EVALUATION CONTROLLER!");
         $scope.evaluationTemplate = {
             "ID": 0,
@@ -11,6 +11,7 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
             "TeacherQuestions": []
         };
 
+        console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);
         console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);
 
         $scope.test = function() {

@@ -3,18 +3,18 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', '$r
             $scope.login = function() {
                 if($scope.loginForm.$valid) {
                     dispatch.login($scope.user.name, $scope.user.pass).
-                        success(function(data, status, headers, config) {
+                        success(function(data) {
                             $rootScope.data = data;
-                            if(data.User.Role == 'student') {
+                            if(data.User.Role === 'student') {
                                 $location.path('/front-page-student');
                             }
                             else {
                                 $location.path('/front-page-teacher');
                             }
                         }).
-                        error(function(data, status, headers, config) {
+                        error(function() {
                             $scope.loginFail = true;
                         });
                 }
-            }
+            };
         }]);

@@ -1,5 +1,6 @@
 angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', 'dispatch',
         function($scope, $routeParams, $route, dispatch) {
+            console.log("INSIDE STUDENT CONTROLLER!");
             dispatch.myCourses().
                 success(function(data, status, headers, config) {
                     console.log("getCourses - SUCCESS!");

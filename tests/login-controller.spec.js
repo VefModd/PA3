@@ -34,7 +34,7 @@ describe('LoginController', function (){
     }));
 
     describe('$scope.login', function () {
-        var $scope, $location, controller;
+        var $scope, $location, controller, $rootScope;
         beforeEach(function() {
             // Constructing a fake enviroment
             // (scope data and location function)
@@ -50,6 +50,8 @@ describe('LoginController', function (){
                            return p;
                        }
             };
+            $rootScope = $rootScope.$new();
+
             // Spying on functions that should or shouldn't be called
             spyOn(mockDispatch, 'login').and.callThrough();
             spyOn($location, 'path');

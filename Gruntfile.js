@@ -1,5 +1,6 @@
 /*global module:false*/
 module.exports = function(grunt) {
+  require('jit-grunt')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -11,6 +12,18 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
+    less: {
+      development: {
+        options: {
+            compress: true,
+            yuicompress: true,
+            optimization: 2
+        },
+        files: {
+          "css/<%= pkg.name %>.css": "bower_components/bootstrap/less/bootstrap.less"
+        }
+      },
+    },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -47,12 +60,13 @@ module.exports = function(grunt) {
         globals: {
           angular: true,
           console: true,
+          require: true
         }
       },
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
+      src_test: {
         src: ['src/**/*.js']
       }
     },
@@ -66,9 +80,16 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
+      src_test: {
         files: ['src/js/**/*.js', 'tests/**/*.js'],
-        tasks: ['concat', 'uglify', 'jshint:lib_test', 'karma']
+        tasks: ['jshint:src_test', 'karma']
+      },
+      styles: {
+        files: ['less/**/*.less'],
+        tasks: ['less'],
+        options : {
+          nospawn: true
+        }
       }
     }
   });
@@ -78,8 +99,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-karma');
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'watch']);
 
 };

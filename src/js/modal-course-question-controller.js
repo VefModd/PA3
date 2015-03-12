@@ -1,5 +1,10 @@
 angular.module('angularEvaluation').controller('ModalCourseQuestionController', ['$scope', '$modalInstance',
     function ($scope, $modalInstance) {
+        var ans = {
+            "Text": "blee",
+            "Weight": 30
+        };
+
         $scope.question = {
             "ID": 0,
             "Text": "",
@@ -8,6 +13,9 @@ angular.module('angularEvaluation').controller('ModalCourseQuestionController', 
             "Type": "",
             "Answers": []
         };
+        $scope.question.Answers.push(ans);
+        $scope.question.Answers.push(ans);
+        $scope.question.Answers.push(ans);
 
         $scope.showInputAnswer = false;
 

@@ -35,7 +35,7 @@
                 </label>
                 <ul class="list-group" ng-show="question.Answers.length != 0">
                     <li class="list-group-item" ng-repeat"answer in question.Answers">
-                        {{ answer.Text }}
+                        {{ answer.Text }} -  {{ answer.Weight }}%
                     </li>
                 </ul>
                 <p ng-show="question.Answers.length == 0">

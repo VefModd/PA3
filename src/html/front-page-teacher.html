@@ -1,57 +1,68 @@
-<div class="col-md-10 col-md-offset-1">
-    <div class="jumbotron">
-        <h1>Welcome {{ data.User.FullName }}</h1>
-        <p>
-        Hot baby yes!
-        </p>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="jumbotron">
+            <h1>Welcome {{ data.User.FullName }}</h1>
+            <p>
+            Hot baby yes!
+            </p>
+        </div>
     </div>
+</div>
+
+<div class="row">
     <div class="col-md-10 col-md-offset-1">
         <button type="button" class="btn btn-block btn-lg btn-success" ng-click="newEvaluationTemplate()">
             Click here to create a new evaluation template!
         </button>
+        <br>
     </div>
-    <!-- Remember to fix this - we dont want to have this style stuff but
-    I but it there temporarly-->
-    <div class="col-md-12" style="margin-top:30px">
-        <div class="col-md-4 md-offset-1 pull-left">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Open evaluations:
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                        ble
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 md-offset-1 pull-rigth">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Closed evaluations:
-                </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                        ble2
-                        </li>
-                    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-4 md-offset-1 pull-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Open evaluations:
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            ble
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4 md-offset-1 pull-rigth">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Evaluation templates:
+
+            <div class="col-md-4 md-offset-1 pull-rigth">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Closed evaluations:
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            ble2
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                        ble3
-                        </li>
-                    </ul>
+            </div>
+
+            <div class="col-md-4 md-offset-1 pull-rigth">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Evaluation templates:
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            ble3
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

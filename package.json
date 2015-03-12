@@ -5,20 +5,20 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    },
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
   "repository": {
-   "type": "git",
-   "url": "https://github.com/vefmodd/PA3.git"
- },
- "author": "Daniel Benediktsson, Jón Freysteinn Jónsson, Jörundur Jörundsson",
- "license": "ISC",
- "bugs": {
-   "url": "https://github.com/vefmodd/PA3/issues"
- },
- "homepage": "https://github.com/vefmodd/PA3",
+    "type": "git",
+    "url": "https://github.com/vefmodd/PA3.git"
+  },
+  "author": "Daniel Benediktsson, Jón Freysteinn Jónsson, Jörundur Jörundsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vefmodd/PA3/issues"
+  },
+  "homepage": "https://github.com/vefmodd/PA3",
   "devDependencies": {
     "jasmine-core": "^2.2.0",
     "karma": "^0.12.31",
@@ -33,5 +33,8 @@
     "grunt-contrib-uglify": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.10.1"
+  },
+  "dependencies": {
+    "less": "^2.4.0"
   }
 }

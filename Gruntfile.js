@@ -46,22 +46,14 @@ module.exports = function(grunt) {
         eqnull: true,
         globals: {
           angular: true,
-          module: true,
           console: true,
-          /* Test globas */
-          describe: true,
-          beforeEach: true,
-          inject: true,
-          spyOn: true,
-          it: true,
-          expect: true
         }
       },
       gruntfile: {
         src: 'Gruntfile.js'
       },
       lib_test: {
-        src: ['src/**/*.js', 'tests/**/*.js']
+        src: ['src/**/*.js']
       }
     },
     karma: {

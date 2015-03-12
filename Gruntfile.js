@@ -45,7 +45,8 @@ module.exports = function(grunt) {
         boss: true,
         eqnull: true,
         globals: {
-          angular: true
+          angular: true,
+          console: true
         }
       },
       gruntfile: {
@@ -67,7 +68,7 @@ module.exports = function(grunt) {
       },
       lib_test: {
         files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'karma']
+        tasks: ['concat', 'uglify', 'jshint:lib_test', 'karma']
       }
     }
   });

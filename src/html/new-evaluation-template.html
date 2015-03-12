@@ -67,7 +67,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <button type="button" class="btn btn-block btn-md btn-primary">
+        <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addCourseQuestion()">
             Click here to add a new course question!
         </button>
         <br>
@@ -96,7 +96,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <button type="button" class="btn btn-block btn-md btn-primary">
+        <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addCourseQuestion()">
             Click here to add a new teacher question!
         </button>
         <br>
@@ -113,3 +113,22 @@
 </div>
 
 
+
+<div ng-controller="NewEvaluationController">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div>
+            <div class="modal-header">
+                <p>This is a model!!"</p>
+            </div>
+            <div class="modal-body">
+                <p>This is great!!!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success">Finish</button>
+            </div>
+        </div>
+    </script>
+    <button class="btn btn-default" ng-click="open()">Open me!</button>
+    <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+</div>

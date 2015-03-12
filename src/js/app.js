@@ -1,4 +1,4 @@
-angular.module('angularEvaluation', [ 'ngRoute', 'ui.bootstrap' ]).
+angular.module('angularEvaluation', [ 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls' ]).
     config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.

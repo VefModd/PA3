@@ -1,4 +1,6 @@
-angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$scope', '$routeParams', '$route', 'dispatch',
-        function($scope, $routeParams, $route, dispatch) {
-            $scope.teacherUsernaem = $routeParams.teacherUsername;
-        }]);
+angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$scope', '$routeParams', '$route', '$location', 'dispatch',
+    function($scope, $routeParams, $route, $location, dispatch) {
+        $scope.newEvaluationTemplate = function() {
+            $location.path('/new-evaluation-template');
+        };
+    }]);

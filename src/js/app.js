@@ -12,7 +12,11 @@ angular.module('angularEvaluation', [ 'ngRoute', 'ui.bootstrap' ]).
             }).
             when('/front-page-teacher', {
                 templateUrl: 'src/html/front-page-teacher.html',
-                constroller: 'FrontPageTeacherController'
+                controller: 'FrontPageTeacherController'
+            }).
+            when('/new-evaluation-template', {
+                templateUrl: 'src/html/new-evaluation-template.html',
+                controller: 'NewEvaluationController'
             }).
             otherwise({
                 redirectTo: '/login'

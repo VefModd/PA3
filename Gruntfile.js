@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       lib_test: {
-        files: '<%= jshint.lib_test.src %>',
+        files: ['src/js/**/*.js', 'tests/**/*.js'],
         tasks: ['concat', 'uglify', 'jshint:lib_test', 'karma']
       }
     }
@@ -80,6 +80,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'watch']);
 
 };

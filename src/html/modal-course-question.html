@@ -8,7 +8,7 @@
         <form name="newCourseQuestion" novalidate ng-submit="finish()">
             <div class="form-group">
                 <label for="questionText" class="control-label">
-                    Type the question text:
+                    Type the question:
                 </label>
                 <input type="text"
                     name="questionText"
@@ -17,6 +17,7 @@
                     ng-maxlength="50"
                     class="form-control" />
             </div>
+
             <div class="form-group">
                 <label for="questionType" class="control-label">
                     Choose the question type:
@@ -26,19 +27,56 @@
                     <label class="btn btn-primary" ng-model="question.Type" btn-radio="'single'">Single answer question</label>
                     <label class="btn btn-primary" ng-model="question.Type" btn-radio="'multiple'">Multiple answer question</label>
                 </div>
-                <!--
-                <div class="btn-group" dropdown>
-                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" dropdown-toggle>
-                        Type
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Text question</a></li>
-                        <li><a href="#">Single answer question</a></li>
-                        <li><a href="#">Multiple answer question</a></li>
-                    </ul>
-                </div>
-                -->
+            </div>
+
+            <div class="form-group" ng-show="question.Type != 'text' && question.Type != ''">
+                <label for="answers" class="control-label">
+                    The possible answers for the quesion:
+                </label>
+                <ul class="list-group" ng-show="question.Answers.length != 0">
+                    <li class="list-group-item" ng-repeat"answer in question.Answers">
+                        {{ answer.Text }} -  {{ answer.Weight }}%
+                    </li>
+                </ul>
+                <p ng-show="question.Answers.length == 0">
+                    You still have not added any possible answers to the question!
+                </p>
+
+                <form name="answerForm" novalidate>
+                    <div class="form-group" ng-show="showInputAnswer">
+                        <label for="answerText" class="control-label">
+                            Answer:
+                        </label>
+                        <input type="text"
+                            name="answerText"
+                            ng-model="answer.Text"
+                            required
+                            ng-maxlength="25"
+                            class="form-control" />
+                    </div>
+
+                    <div class="form-group" ng-show="showInputAnswer">
+                        <label for="answerWeight" class="control-label">
+                            Weight:
+                        </label>
+                        <input type="number"
+                            name="answerWeight"
+                            ng-model="answer.Weight"
+                            required
+                            min="0"
+                            max="100"
+                            class="form-control" />
+                    </div>
+                    <div class="form-group" ng-show="showInputAnswer">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="addAnswer(answer)">
+                            Add
+                        </button>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="inputAnswer()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add a answer
+                </button>
             </div>
         </form>
     </div>

@@ -16,15 +16,16 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
                 //templateUrl: 'myModalContent.html',
                 templateUrl: 'src/html/modal-course-question.html',
                 controller: 'ModalCourseQuestionController',
-                size: 20
+                size: 'lg'
             });
 
-            modalInstance.result.then(function() {
+            modalInstance.result.then(function(data) {
+                console.log("inside new ev.. modalInstance: ", modalInstance);
+                console.log("DATA: ", data);
                 console.log("hothot");
             });
         };
 
-        console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);
         console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);
 
         $scope.test = function() {

@@ -50,7 +50,8 @@ describe('LoginController', function (){
                            return p;
                        }
             };
-            $rootScope = $rootScope.$new();
+            $rootScope = {
+            };
 
             // Spying on functions that should or shouldn't be called
             spyOn(mockDispatch, 'login').and.callThrough();
@@ -60,8 +61,8 @@ describe('LoginController', function (){
             controller = $controller('LoginController', {
                 $scope: $scope,
                 dispatch: mockDispatch,
-                $location : $location
-
+                $location : $location,
+                $rootScope : $rootScope
             });
         });
 
@@ -91,6 +92,7 @@ describe('LoginController', function (){
             expect(mockDispatch.login).toHaveBeenCalled();
             expect($scope.loginFail).not.toBeTruthy();
             expect($location.path).toHaveBeenCalled();
+            expect($rootScope.data).toBeDefined();
         });
 
         it('should fail the login since form was invalid', function() {
@@ -104,6 +106,7 @@ describe('LoginController', function (){
             expect(mockDispatch.login).not.toHaveBeenCalled();
             expect($scope.loginFail).toBe(undefined);
             expect($location.path).not.toHaveBeenCalled();
+            expect($rootScope.data).not.toBeDefined();
         });
 
     });

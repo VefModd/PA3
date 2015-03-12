@@ -50,7 +50,8 @@ describe('LoginController', function (){
                            return p;
                        }
             };
-            $rootScope = $rootScope.$new();
+            $rootScope = {
+            };
 
             // Spying on functions that should or shouldn't be called
             spyOn(mockDispatch, 'login').and.callThrough();

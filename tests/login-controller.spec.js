@@ -9,7 +9,7 @@ describe('LoginController', function (){
             return {
                 success: function (fn) {
                     // Providing two possible accepted usernames
-                    if(user === 'dabs' || user === 'admin') {
+                    if((user === 'dabs' || user === 'admin') && pass !== '') {
                         // Calling the success function with some fake data
                         var data = {
                             User : { Role : 'teacher'}
@@ -66,7 +66,7 @@ describe('LoginController', function (){
         it('should fail the login because of invalid user', function() {
             // Arrange:
             $scope.user.name = 'ekkidabs';
-            $scope.user.pass = '123456'
+            $scope.user.pass = '123456';
 
             // Act:
             $scope.login();
@@ -80,7 +80,7 @@ describe('LoginController', function (){
         it('should relocate the user and save the user info in rootscope', function() {
             // Arrange:
             $scope.user.name = 'dabs';
-            $scope.user.pass = '123456'
+            $scope.user.pass = '123456';
 
             // Act:
             $scope.login();

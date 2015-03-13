@@ -4,6 +4,10 @@ angular.module('angularEvaluation').controller('ModalCourseQuestionController', 
             "Text": "blee",
             "Weight": 30
         };
+        var ans2 = {
+            "Text": "blee2",
+            "Weight": 34
+        };
 
         $scope.question = {
             "ID": 0,
@@ -14,13 +18,9 @@ angular.module('angularEvaluation').controller('ModalCourseQuestionController', 
             "Answers": []
         };
         $scope.question.Answers.push(ans);
-        $scope.question.Answers.push(ans);
-        $scope.question.Answers.push(ans);
+        $scope.question.Answers.push(ans2);
 
         $scope.showInputAnswer = false;
-
-        console.log("the modal instance: ", $modalInstance);
-        console.log("showInputAnswer: ", $scope.showInputAnswer);
 
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
@@ -35,11 +35,11 @@ angular.module('angularEvaluation').controller('ModalCourseQuestionController', 
         };
 
         $scope.addAnswer = function(answer) {
-            console.log("answer: ", answer);
             $scope.showInputAnswer = false;
             $scope.question.Answers.push(answer);
+            console.log("answer: ", answer);
             console.log("question: ", $scope.question);
-            console.log("question.Answer: ", $scope.question.Answers);
+            console.log("question.Answers: ", $scope.question.Answers);
         };
 
     }]);

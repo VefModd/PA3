@@ -8,21 +8,30 @@ describe('FrontPageTeacherController', function(){
     }));
 
     describe('$scope.newEvaluationTemplate', function(){
-        var $location;
+        var $location, $scope, controller;
         beforeEach(function(){
             //constructing a fake environment
             $location = {
                 path : function(p) {
                     return p;
                 }
-            }
+            };
+            $scope = {};
             spyOn($location, 'path');
 
+            //constructing the controller
+            controller = $controller('FrontPageTeacherController', {
+                $scope : $scope,
+                $location : $location,
+            });
         });
+        it('should relocate the teacher to the eval tmpl site', function(){
+            //Arrange
 
+            //Act
+            $scope.newEvaluationTemplate();
+            //Assert
+            expect($location.path).toHaveBeenCalled();
+        });
     });
-
-
-
-
 });

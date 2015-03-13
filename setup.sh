@@ -2,3 +2,4 @@
 npm install -d
 bower install -d
 grunt
+grunt watch

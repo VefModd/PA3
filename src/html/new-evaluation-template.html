@@ -53,8 +53,8 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group" ng-show="evaluationTemplate.CourseQuestions.length != 0">
-                    <li class="list-group-item" ng-repeat"courseQuestion in evaluationTemplate.CourseQuestions">
-                        {{ courseQuestion.text }}
+                    <li class="list-group-item" ng-repeat="courseQuestion in evaluationTemplate.CourseQuestions">
+                        {{ courseQuestion.Text }}
                     </li>
                 </ul>
                 <p ng-show="evaluationTemplate.CourseQuestions.length == 0">
@@ -82,7 +82,7 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group" ng-show="evaluationTemplate.TeacherQuestions.length != 0">
-                    <li class="list-group-item" ng-repeat"teacherQuestion in evaluationTemplate.TeacherQuestions">
+                    <li class="list-group-item" ng-repeat="teacherQuestion in evaluationTemplate.TeacherQuestions">
                         {{ teacherQuestion.text }}
                     </li>
                 </ul>

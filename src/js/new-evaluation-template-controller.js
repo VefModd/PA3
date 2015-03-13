@@ -2,7 +2,7 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
     function($scope, $modal) {
         console.log("INSDIE NEW EVALUATION CONTROLLER!");
         $scope.evaluationTemplate = {
-            "ID": 0,
+            //"ID": 0,
             "Title": "",
             "TitleEN": "",
             "IntroText": "",
@@ -13,20 +13,15 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
     
         $scope.addCourseQuestion = function() {
             var modalInstance = $modal.open({
-                //templateUrl: 'myModalContent.html',
                 templateUrl: 'src/html/modal-course-question.html',
                 controller: 'ModalCourseQuestionController',
                 size: 'lg'
             });
 
             modalInstance.result.then(function(data) {
-                console.log("inside new ev.. modalInstance: ", modalInstance);
-                console.log("DATA: ", data);
-                console.log("hothot");
+                $scope.evaluationTemplate.CourseQuestions.push(data);
             });
         };
-
-        console.log("evaluationTemplate before adding anything to is: ", $scope.evaluationTemplate);
 
         $scope.test = function() {
             console.log("evaluationTemplate after adding something to it: ", $scope.evaluationTemplate);

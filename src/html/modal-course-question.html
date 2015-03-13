@@ -34,8 +34,8 @@
                     The possible answers for the quesion:
                 </label>
                 <ul class="list-group" ng-show="question.Answers.length != 0">
-                    <li class="list-group-item" ng-repeat"answer in question.Answers">
-                        {{ answer.Text }} -  {{ answer.Weight }}%
+                    <li class="list-group-item" ng-repeat="answer in question.Answers">
+                        {{ answer.Text }} - {{ answer.Weight }}
                     </li>
                 </ul>
                 <p ng-show="question.Answers.length == 0">
@@ -52,6 +52,8 @@
                             ng-model="answer.Text"
                             required
                             ng-maxlength="25"
+                            ng-keyup="$event.keyCode == 13 && addAnswer()"
+                            placeholder="Type the answer here.."
                             class="form-control" />
                     </div>
 
@@ -64,11 +66,13 @@
                             ng-model="answer.Weight"
                             required
                             min="0"
-                            max="100"
+                            max="5"
+                            ng-keyup="$event.keyCode == 13 && addAnswer()"
+                            placeholder="Type the weight here.."
                             class="form-control" />
                     </div>
                     <div class="form-group" ng-show="showInputAnswer">
-                        <button type="button" class="btn btn-primary btn-xs" ng-click="addAnswer(answer)">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="addAnswer()">
                             Add
                         </button>
                     </div>

@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal',
-    function($scope, $modal) {
+angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal', 'dispatchNewEvaluation',
+    function($scope, $modal, dispatchNewEvaluation) {
         $scope.evaluationTemplate = {
             //"ID": 0,
             "Title": "",
@@ -67,6 +67,17 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
 
             if($scope.templateForm.$valid) {
                 console.log("The template is valid - add it to the database");
+                console.log("WHAT HT FUCKKSDF");
+                console.log("$scope.evaluationTemplate: ", $scope.evaluationTemplate);
+
+                dispatchNewEvaluation.newEvaluationTemplate($scope.evaluationTemplate).
+                    success(function(data) {
+                        console.log("SUCCESS!");
+                    }).
+                error(function() {
+                    console.log("error");
+                    $scope.newEvaluationTemplateFail = true;
+                });
             }
         };
 

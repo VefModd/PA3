@@ -46,8 +46,28 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
             });
         };
 
-        $scope.test = function() {
-            console.log("evaluationTemplate after adding something to it: ", $scope.evaluationTemplate);
+        $scope.finishTemplate = function() {
+            console.log("Inside finish template function");
+            if($scope.evaluationTemplate.CourseQuestions.length === 0 ||
+                    $scope.evaluationTemplate.TeacherQuestions.length === 0) {
+                if($scope.evaluationTemplate.CourseQuestions.length === 0) {
+                    $scope.templateForm.courseQuestions.$invalid = true;
+                }
+
+                if($scope.evaluationTemplate.TeacherQuestions.length === 0) {
+                    $scope.templateForm.teacherQuestions.$invalid = true;
+                }
+                $scope.templateForm.$valid = false;
+            }
+            else {
+                $scope.templateForm.courseQuestions.$invalid = false;
+                $scope.templateForm.teacherQuestions.$invalid = false;
+                $scope.templateForm.$valid = true;
+            }
+
+            if($scope.templateForm.$valid) {
+                console.log("The template is valid - add it to the database");
+            }
         };
 
     }]);

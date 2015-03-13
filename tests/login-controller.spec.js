@@ -61,7 +61,7 @@ describe('LoginController', function (){
             // Constructing the controller
             controller = $controller('LoginController', {
                 $scope: $scope,
-                dispatch: mockDispatch,
+                dispatchLogin: mockDispatch,
                 $location : $location,
                 $rootScope : $rootScope
             });

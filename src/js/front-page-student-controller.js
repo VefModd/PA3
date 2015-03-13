@@ -1,6 +1,6 @@
-angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', 'dispatch',
-        function($scope, $routeParams, $route, dispatch) {
-            dispatch.myCourses().
+angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', 'dispatchStudent',
+        function($scope, $routeParams, $route, dispatchStudent) {
+            dispatchStudent.myCourses().
                 success(function(data) {
                     console.log("getCourses - SUCCESS!");
                     $scope.courses = data;
@@ -9,7 +9,7 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                     console.log("getCourses - ERROR!");
                 });
 
-            dispatch.myEvaluations().
+            dispatchStudent.myEvaluations().
                 success(function(data) {
                     console.log("getEvaluations - SUCCESS!");
                     $scope.evaluations = data;

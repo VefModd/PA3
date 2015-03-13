@@ -20,7 +20,7 @@ module.exports = function(grunt) {
             optimization: 2
         },
         files: {
-          "css/<%= pkg.name %>.css": "bower_components/bootstrap/less/bootstrap.less"
+          "dist/css/<%= pkg.name %>.css": "bower_components/bootstrap/less/bootstrap.less"
         }
       },
     },
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:src_test', 'karma']
       },
       styles: {
-        files: ['less/**/*.less'],
+        files: ['src/less/**/*.less'],
         tasks: ['less'],
         options : {
           nospawn: true

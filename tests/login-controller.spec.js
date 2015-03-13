@@ -11,8 +11,9 @@ describe('LoginController', function (){
                     // Providing two possible accepted usernames
                     if((user === 'dabs' || user === 'admin') && pass !== '') {
                         // Calling the success function with some fake data
+                        var role = (user === 'dabs') ? 'student' : 'admin';
                         var data = {
-                            User : { Role : 'teacher'}
+                            User : { Role : role }
                         };
                         fn(data);
                     }
@@ -60,7 +61,7 @@ describe('LoginController', function (){
             // Constructing the controller
             controller = $controller('LoginController', {
                 $scope: $scope,
-                dispatch: mockDispatch,
+                dispatchLogin: mockDispatch,
                 $location : $location,
                 $rootScope : $rootScope
             });
@@ -83,6 +84,21 @@ describe('LoginController', function (){
         it('should relocate the user and save the user info in rootscope', function() {
             // Arrange:
             $scope.user.name = 'dabs';
+            $scope.user.pass = '123456';
+
+            // Act:
+            $scope.login();
+
+            // Assert:
+            expect(mockDispatch.login).toHaveBeenCalled();
+            expect($scope.loginFail).not.toBeTruthy();
+            expect($location.path).toHaveBeenCalled();
+            expect($rootScope.data).toBeDefined();
+        });
+
+        it('should relocate the teacher/admin and save the user info in rootscope', function() {
+            // Arrange:
+            $scope.user.name = 'admin';
             $scope.user.pass = '123456';
 
             // Act:

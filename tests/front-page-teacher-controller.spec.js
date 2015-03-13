@@ -1,0 +1,9 @@
+describe('FrontPageTeacherController', function(){
+
+
+
+
+
+
+
+});

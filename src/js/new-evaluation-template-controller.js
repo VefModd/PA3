@@ -1,6 +1,5 @@
 angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal',
     function($scope, $modal) {
-        console.log("INSDIE NEW EVALUATION CONTROLLER!");
         $scope.evaluationTemplate = {
             //"ID": 0,
             "Title": "",
@@ -13,8 +12,8 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
     
         $scope.addCourseQuestion = function() {
             var modalInstance = $modal.open({
-                templateUrl: 'src/html/modal-course-question.html',
-                controller: 'ModalCourseQuestionController',
+                templateUrl: 'src/html/modal-question.html',
+                controller: 'ModalQuestionController',
                 size: 'lg',
                 resolve: {
                     typeOfQuestion : function() {

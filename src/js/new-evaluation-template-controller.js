@@ -69,7 +69,7 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
                 console.log("The template is valid - add it to the database");
                 console.log("WHAT HT FUCKKSDF");
                 console.log("$scope.evaluationTemplate: ", $scope.evaluationTemplate);
-
+                /*
                 dispatchNewEvaluation.newEvaluationTemplate($scope.evaluationTemplate).
                     success(function(data) {
                         console.log("SUCCESS!");
@@ -78,6 +78,7 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
                     console.log("error");
                     $scope.newEvaluationTemplateFail = true;
                 });
+                */
             }
         };
 

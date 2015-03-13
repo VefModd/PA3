@@ -20,6 +20,20 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
 
             modalInstance.result.then(function(data) {
                 $scope.evaluationTemplate.CourseQuestions.push(data);
+                console.log("the evaluation template: ", $scope.evaluationTemplate);
+            });
+        };
+
+        $scope.addTeacherQuestion = function() {
+            var modalInstance = $modal.open({
+                templateUrl: 'src/html/modal-teacher-question.html',
+                controller: 'ModalTeacherQuestionController',
+                size: 'lg'
+            });
+
+            modalInstance.result.then(function(data) {
+                $scope.evaluationTemplate.TeacherQuestions.push(data);
+                console.log("the evaluation template: ", $scope.evaluationTemplate);
             });
         };
 

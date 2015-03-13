@@ -83,7 +83,7 @@
             <div class="panel-body">
                 <ul class="list-group" ng-show="evaluationTemplate.TeacherQuestions.length != 0">
                     <li class="list-group-item" ng-repeat="teacherQuestion in evaluationTemplate.TeacherQuestions">
-                        {{ teacherQuestion.text }}
+                        {{ teacherQuestion.Text }}
                     </li>
                 </ul>
                 <p ng-show="evaluationTemplate.TeacherQuestions.length == 0">
@@ -96,7 +96,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addCourseQuestion()">
+        <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addTeacherQuestion()">
             Click here to add a new teacher question!
         </button>
         <br>

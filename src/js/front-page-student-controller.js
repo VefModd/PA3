@@ -5,6 +5,7 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                     $scope.courses = data;
                 }).
                 error(function() {
+                    $scope.courseListFail = true;
                 });
 
             dispatchStudent.myEvaluations().
@@ -12,5 +13,6 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                     $scope.evaluations = data;
                 }).
                 error(function() {
+                    $scope.evalListFail = true;
                 });
         }]);

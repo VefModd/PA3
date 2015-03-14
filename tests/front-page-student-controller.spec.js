@@ -12,6 +12,9 @@ describe('FrontPageStudentController', function(){
     
     };
 
+    beforeEach(inject(function (_$controller_) {
+        $controller = _$controller_;
+    }));
 
 
 

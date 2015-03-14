@@ -60,7 +60,7 @@
                         <ul class="list-group" ng-show="evaluationTemplates.length !== 0">
                             <li class="list-group-item" ng-repeat="evaluationTemplate in evaluationTemplates">
                                 <div class="pull-right">
-                                    <button class="btn btn-xs btn-primary">
+                                    <button type="button" class="btn btn-xs btn-primary" ng-click="newEvaluation(evaluationTemplate.ID)">
                                         Add a new evaluation
                                     </button>
                                 </div>

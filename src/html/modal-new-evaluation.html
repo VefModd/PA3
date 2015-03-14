@@ -1,0 +1,48 @@
+<div>
+    <div class="modal-header">
+        <h2>
+            Select the start and end date for the evaluation:
+        </h2>
+    </div>
+
+    <div class="modal-body">
+        <form name="newEvaluationForm" novalidate ng-submit="finishEvaluation()">
+
+            <div class="form-group"
+                ng-class="{ 'has-error': newEvaluationForm.startDate.$invalid && newEvaluationForm.$submitted }">
+
+                <label for="startDate" class="control-label">
+                    Type the start date for the evaluation:
+                </label>
+
+                <input type="date"
+                    name="startDate"
+                    ng-model="date.StartDate"
+                    required
+                    class="form-control" />
+            </div>
+
+            <div class="form-group"
+                ng-class="{ 'has-error': newEvaluationForm.endDate.$invalid && newEvaluationForm.$submitted }">
+
+                <label for="endDate" class="control-label">
+                    Type the end date for the evaluation:
+                </label>
+
+                <input type="date"
+                    name="endDate"
+                    ng-model="date.EndDate"
+                    required
+                    class="form-control" />
+            </div>
+
+            <div class="modal-footer">
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success btn-lg" value="Finish evaluation">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

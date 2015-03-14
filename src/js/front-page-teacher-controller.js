@@ -1,4 +1,4 @@
-angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$scope', '$routeParams', '$route', '$location', '$modal', 'dispatchTeacher',
+angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$scope', '$routeParams', '$route', '$location', '$modal', 'dispatchTeacher', 
     function($scope, $routeParams, $route, $location, $modal, dispatchTeacher) {
         dispatchTeacher.evaluationTemplates().
             success(function(data) {
@@ -17,6 +17,8 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
             error(function() {
                 console.log("evaluations - ERROR!");
             });
+
+        $scope.evaluations = [];
 
         $scope.newEvaluationTemplate = function() {
             $location.path('/new-evaluation-template');
@@ -43,6 +45,7 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
 
                 dispatchTeacher.addEvaluation($scope.evaluation).
                    success(function() {
+                       $route.reload();
                        console.log("addEvaluation - SUCCESS");
                    }).
                    error(function() {

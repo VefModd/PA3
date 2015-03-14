@@ -57,11 +57,14 @@
                         Evaluation templates:
                     </div>
                     <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                            ble3
+                        <ul class="list-group" ng-show="evaluationTemplates.length !== 0">
+                            <li class="list-group-item" ng-repeat="evaluationTemplate in evaluationTemplates">
+                                {{ evaluationTemplate.ID }} - {{ evaluationTemplate.Title }} GOT
                             </li>
                         </ul>
+                        <p ng-show="evaluationTemplates.length === 0">
+                            There are no evaluation templates available! Click on the button above to create a new one!
+                        </p>
                     </div>
                 </div>
             </div>

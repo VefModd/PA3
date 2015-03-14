@@ -1,6 +1,5 @@
-angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal',
-    function($scope, $modal) {
-        console.log("INSDIE NEW EVALUATION CONTROLLER!");
+angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal', '$location', 'dispatchNewEvaluation',
+    function($scope, $modal, $location, dispatchNewEvaluation) {
         $scope.evaluationTemplate = {
             //"ID": 0,
             "Title": "",
@@ -13,9 +12,14 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
     
         $scope.addCourseQuestion = function() {
             var modalInstance = $modal.open({
-                templateUrl: 'src/html/modal-course-question.html',
-                controller: 'ModalCourseQuestionController',
-                size: 'lg'
+                templateUrl: 'src/html/modal-question.html',
+                controller: 'ModalQuestionController',
+                size: 'lg',
+                resolve: {
+                    typeOfQuestion : function() {
+                        return 'courseQuestion';
+                    }
+                }
             });
 
             modalInstance.result.then(function(data) {
@@ -26,9 +30,14 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
 
         $scope.addTeacherQuestion = function() {
             var modalInstance = $modal.open({
-                templateUrl: 'src/html/modal-teacher-question.html',
-                controller: 'ModalTeacherQuestionController',
-                size: 'lg'
+                templateUrl: 'src/html/modal-question.html',
+                controller: 'ModalQuestionController',
+                size: 'lg',
+                resolve: {
+                    typeOfQuestion : function() {
+                        return 'teacherQuestion';
+                    }
+                }
             });
 
             modalInstance.result.then(function(data) {
@@ -37,8 +46,40 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
             });
         };
 
-        $scope.test = function() {
-            console.log("evaluationTemplate after adding something to it: ", $scope.evaluationTemplate);
+        $scope.finishTemplate = function() {
+            console.log("Inside finish template function");
+            if($scope.evaluationTemplate.CourseQuestions.length === 0 ||
+                    $scope.evaluationTemplate.TeacherQuestions.length === 0) {
+                if($scope.evaluationTemplate.CourseQuestions.length === 0) {
+                    $scope.templateForm.courseQuestions.$invalid = true;
+                }
+
+                if($scope.evaluationTemplate.TeacherQuestions.length === 0) {
+                    $scope.templateForm.teacherQuestions.$invalid = true;
+                }
+                $scope.templateForm.$valid = false;
+            }
+            else {
+                $scope.templateForm.courseQuestions.$invalid = false;
+                $scope.templateForm.teacherQuestions.$invalid = false;
+                $scope.templateForm.$valid = true;
+            }
+
+            if($scope.templateForm.$valid) {
+                $scope.evaluationTemplate.TitleEN = $scope.evaluationTemplate.Title;
+                $scope.evaluationTemplate.IntroTextEN = $scope.evaluationTemplate.IntroText;
+                console.log("$scope.evaluationTemplate: ", $scope.evaluationTemplate);
+                dispatchNewEvaluation.newEvaluationTemplate($scope.evaluationTemplate).
+                    success(function() {
+                        console.log("SUCCESS!");
+                        $location.path('/front-page-teacher');
+                    }).
+                error(function() {
+                    console.log("ERROR");
+                    // TODO ERROR MESSAGE
+                    //$scope.newEvaluationTemplateFail = true;
+                });
+            }
         };
 
     }]);

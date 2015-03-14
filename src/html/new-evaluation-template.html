@@ -3,12 +3,151 @@
         <div class="jumbotron">
             <h1>Welcome {{ data.User.FullName }}</h1>
             <p>
-            HERE COMES NEW EVALUATION TEMPLATE!
+                Fill out the form below and press 'finish evaluation template' button below when you are done!
             </p>
         </div>
     </div>
 </div>
 
+<form name="templateForm" novalidate ng-submit="finishTemplate()">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    Basic information:
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group"
+                        ng-class="{'has-error': templateForm.templateTitle.$invalid && templateForm.$submitted}">
+
+                        <label for="templateTitle" class="control-label">
+                            Title:
+                        </label>
+
+                        <input type="text"
+                            name="templateTitle"
+                            ng-model="evaluationTemplate.Title"
+                            required
+                            ng-maxlength="32"
+                            class="form-control" />
+                    </div>
+
+                    <div class="form-group"
+                        ng-class="{'has-error': templateForm.templateIntroText.$invalid && templateForm.$submitted}">
+                        <label for="templateIntroText" class="control-label">
+                            Introduction text:
+                        </label>
+                        <textarea cols="1"
+                            rows="5"
+                            name="templateIntroText"
+                            ng-model="evaluationTemplate.IntroText"
+                            required
+                            ng-maxlenght="100"
+                            class="form-control">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    Course questions:
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group"
+                        ng-class="{ 'has-error': templateForm.courseQuestions.$invalid && templateForm.$submitted }">
+                        <ul class="list-group" ng-show="evaluationTemplate.CourseQuestions.length != 0">
+                            <li class="list-group-item" ng-repeat="courseQuestion in evaluationTemplate.CourseQuestions">
+                            {{ courseQuestion.Text }}
+                            </li>
+                        </ul>
+
+                        <p name="courseQuestions"
+                            ng-model="courseErrorMsg"
+                            class="form-control"
+                            ng-show="evaluationTemplate.CourseQuestions.length == 0">
+                            You still have not added any course questions to the evaluation template! Click at the button below to do so!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addCourseQuestion()">
+                Click here to add a new course question!
+            </button>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Teacher questions:
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group"
+                        ng-class="{ 'has-error': templateForm.teacherQuestions.$invalid && templateForm.$submitted }">
+
+                        <ul class="list-group" ng-show="evaluationTemplate.TeacherQuestions.length != 0">
+                            <li class="list-group-item" ng-repeat="teacherQuestion in evaluationTemplate.TeacherQuestions">
+                            {{ teacherQuestion.Text }}
+                            </li>
+                        </ul>
+
+                        <p name="teacherQuestions"
+                            ng-model="teacherErrorMsg"
+                            class="form-control"
+                            ng-show="evaluationTemplate.TeacherQuestions.length == 0">
+                            You still have not added any teacher questions to the evaluation template! Click at the button below to do so!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <button type="button" class="btn btn-block btn-md btn-primary" ng-click="addTeacherQuestion()">
+                Click here to add a new teacher question!
+            </button>
+            <br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="form-group">
+                <input type="submit" class="btn btn-block btn-lg btn-success"  value="Finish evaluation template" />
+            </div>
+            <!--
+            <button type="button" class="btn btn-block btn-lg btn-success" ng-click="test()">
+                Finish evaluation template!
+            </button>
+            <br>
+            -->
+        </div>
+    </div>
+</form>
+
+
+
+<!--
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
@@ -111,3 +250,4 @@
         <br>
     </div>
 </div>
+-->

@@ -11,7 +11,6 @@ angular.module('angularEvaluation').controller('ModalQuestionController', ['$sco
             "Answers": []
         };
 
-
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
@@ -36,6 +35,9 @@ angular.module('angularEvaluation').controller('ModalQuestionController', ['$sco
             }
 
             if($scope.newCourseQuestionForm.$valid) {
+                if($scope.question.Type === 'text') {
+                    $scope.question.Answers = [];
+                }
                 $modalInstance.close($scope.question);
             }
         };

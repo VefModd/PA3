@@ -82,4 +82,8 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
             }
         };
 
+        $scope.cancel = function() {
+            $location.path('/front-page-teacher');
+        };
+
     }]);

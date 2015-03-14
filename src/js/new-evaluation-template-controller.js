@@ -76,7 +76,8 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
                     }).
                 error(function() {
                     console.log("ERROR");
-                    $scope.newEvaluationTemplateFail = true;
+                    // TODO ERROR MESSAGE
+                    //$scope.newEvaluationTemplateFail = true;
                 });
             }
         };

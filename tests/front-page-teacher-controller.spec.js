@@ -25,6 +25,7 @@ describe('FrontPageTeacherController', function(){
                 $location : $location,
             });
         });
+        /*
         it('should relocate the teacher to the eval tmpl site', function(){
             //Arrange
 
@@ -33,5 +34,6 @@ describe('FrontPageTeacherController', function(){
             //Assert
             expect($location.path).toHaveBeenCalled();
         });
+        */
     });
 });

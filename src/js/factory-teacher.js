@@ -9,6 +9,15 @@ angular.module("angularEvaluation").factory("dispatchTeacher",
                     }
                 };
                 return $http.get(SERVER_URL + 'evaluationtemplates', config);
+            },
+            addEvaluation:
+            function(evaluation) {
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.post(SERVER_URL + 'evaluations', evaluation, config);
             }
         };
     });

@@ -1,4 +1,4 @@
-angular.module('angularEvaluation').controller('ModalNewEvaluationController', ['$scope', '$modalInstance',
+angular.module('angularEvaluation').controller('ModalDateController', ['$scope', '$modalInstance',
     function ($scope, $modalInstance) {
         $scope.date = {
             "startDate": undefined,
@@ -11,7 +11,6 @@ angular.module('angularEvaluation').controller('ModalNewEvaluationController', [
 
         $scope.finishEvaluation = function() {
             if($scope.newEvaluationForm.$valid) {
-                console.log("date: ", $scope.date);
                 $modalInstance.close($scope.date);
             }
         };

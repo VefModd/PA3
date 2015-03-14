@@ -1,6 +1,5 @@
 angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$scope', '$routeParams', '$route', '$location', '$modal', 'dispatchTeacher',
     function($scope, $routeParams, $route, $location, $modal, dispatchTeacher) {
-        console.log("Inside FrontPageTeacherController!");
         dispatchTeacher.evaluationTemplates().
             success(function(data) {
                 console.log("evaluationTemplates - SUCCESS!");
@@ -14,30 +13,34 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
             $location.path('/new-evaluation-template');
         };
 
-        $scope.evaluation = {
-            "TemplateID": undefined,
-            "StartDate": undefined,
-            "EndDate": undefined
-        };
-
         $scope.newEvaluation = function(templateID) {
-            console.log("newEvaluatoin");
-            $scope.evaluation.TemplateID = templateID;
+            $scope.evaluation = {
+                "TemplateID": templateID,
+                "StartDate": undefined,
+                "EndDate": undefined
+            };
+
+            //$scope.evaluation.TemplateID = templateID;
             var modalInstance = $modal.open({
-                templateUrl: 'src/html/modal-new-evaluation.html',
-                controller: 'ModalNewEvaluationController',
+                templateUrl: 'src/html/modal-date.html',
+                controller: 'ModalDateController',
                 size: 'lg'
             });
 
             modalInstance.result.then(function(data) {
-                $scope.evaluation.StartDate = data.startDate;
-                $scope.evaluation.EndDate = data.endDate;
-            });
-        };
+                $scope.evaluation.StartDate = data.StartDate;
+                $scope.evaluation.EndDate = data.EndDate;
+                console.log("$scope.evaluation befor adding it to database: ", $scope.evaluation);
 
-        $scope.finishEvaluation = function() {
-            // TODO ADD evaluation
-            console.log("finishEvaluation");
+                dispatchTeacher.addEvaluation($scope.evaluation).
+                   success(function() {
+                       console.log("addEvaluation - SUCCESS");
+                   }).
+                   error(function() {
+                       console.log("addEvaluation - ERRROR");
+                   });
+            });
+
         };
 
     }]);

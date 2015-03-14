@@ -2,11 +2,13 @@ describe('dispatchLogin', function() {
     beforeEach(module('angularEvaluation'));
 
     var factory,
-        $httpBackend;
+        $httpBackend,
+        url;
 
-    beforeEach(inject(function(dispatchLogin, _$httpBackend_) {
+    beforeEach(inject(function(dispatchLogin, _$httpBackend_, _SERVER_URL_) {
         service = dispatchLogin;
         $httpBackend = _$httpBackend_;
+        url = _SERVER_URL_;
     }));
 
     describe("log me in", function() {
@@ -17,7 +19,7 @@ describe('dispatchLogin', function() {
                 pass: "123456"
             }
 
-            $httpBackend.when("POST", "http://dispatch.ru.is/h09/api/v1/login", function (postdata) {
+            $httpBackend.when("POST", url + "login", function (postdata) {
                 expect(JSON.parse(postdata).user).toBe(post.user);
                 expect(JSON.parse(postdata).pass).toBe(post.pass);
                 return true;

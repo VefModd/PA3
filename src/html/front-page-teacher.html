@@ -59,7 +59,14 @@
                     <div class="panel-body">
                         <ul class="list-group" ng-show="evaluationTemplates.length !== 0">
                             <li class="list-group-item" ng-repeat="evaluationTemplate in evaluationTemplates">
-                                {{ evaluationTemplate.ID }} - {{ evaluationTemplate.Title }} GOT
+                                <div class="pull-right">
+                                    <button class="btn btn-xs btn-primary">
+                                        Add a new evaluation
+                                    </button>
+                                </div>
+                                <div>
+                                    {{ evaluationTemplate.ID }} - {{ evaluationTemplate.Title }}
+                                </div>
                             </li>
                         </ul>
                         <p ng-show="evaluationTemplates.length === 0">

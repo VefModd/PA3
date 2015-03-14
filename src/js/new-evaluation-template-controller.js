@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal', 'dispatchNewEvaluation',
-    function($scope, $modal, dispatchNewEvaluation) {
+angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal', '$location', 'dispatchNewEvaluation',
+    function($scope, $modal, $location, dispatchNewEvaluation) {
         $scope.evaluationTemplate = {
             //"ID": 0,
             "Title": "",
@@ -66,19 +66,18 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
             }
 
             if($scope.templateForm.$valid) {
-                console.log("The template is valid - add it to the database");
-                console.log("WHAT HT FUCKKSDF");
+                $scope.evaluationTemplate.TitleEN = $scope.evaluationTemplate.Title;
+                $scope.evaluationTemplate.IntroTextEN = $scope.evaluationTemplate.IntroText;
                 console.log("$scope.evaluationTemplate: ", $scope.evaluationTemplate);
-                /*
                 dispatchNewEvaluation.newEvaluationTemplate($scope.evaluationTemplate).
-                    success(function(data) {
+                    success(function() {
                         console.log("SUCCESS!");
+                        $location.path('/front-page-teacher');
                     }).
                 error(function() {
-                    console.log("error");
+                    console.log("ERROR");
                     $scope.newEvaluationTemplateFail = true;
                 });
-                */
             }
         };
 

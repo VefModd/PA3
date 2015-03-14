@@ -3,7 +3,12 @@ angular.module("angularEvaluation").factory("dispatchNewEvaluation",
         return {
             newEvaluationTemplate:
             function(evaluationTemplate) {
-                $http.post(SERVER_URL + 'evaluationtemplates', evaluationTemplate);
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.post(SERVER_URL + 'evaluationtemplates', evaluationTemplate, config);
             }
         };
     });

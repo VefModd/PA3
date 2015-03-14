@@ -21,37 +21,53 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
-            <div class="col-md-4 md-offset-1 pull-left">
+
+            <div class="col-md-3 md-offset-1 pull-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        New evaluations:
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'new'">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 md-offset-1 pull-left">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Open evaluations:
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                            ble
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'open'">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1 pull-rigth">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Closed evaluations:
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                            ble2
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'closed'">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1 pull-rigth">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Evaluation templates:
@@ -59,7 +75,14 @@
                     <div class="panel-body">
                         <ul class="list-group" ng-show="evaluationTemplates.length !== 0">
                             <li class="list-group-item" ng-repeat="evaluationTemplate in evaluationTemplates">
-                                {{ evaluationTemplate.ID }} - {{ evaluationTemplate.Title }} GOT
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-xs btn-primary" ng-click="newEvaluation(evaluationTemplate.ID)">
+                                        Add a new evaluation
+                                    </button>
+                                </div>
+                                <div>
+                                    {{ evaluationTemplate.ID }} - {{ evaluationTemplate.Title }}
+                                </div>
                             </li>
                         </ul>
                         <p ng-show="evaluationTemplates.length === 0">

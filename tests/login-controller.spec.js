@@ -10,8 +10,8 @@ describe('LoginController', function (){
             return {
                 success: function (fn) {
                     // Providing two possible accepted usernames
-                    if((user === 'dabs' || user === 'admin') && pass !== '') {
-                        // Calling the success function with some fake data
+                     if((user === 'dabs' || user === 'admin') && pass !== '') {
+                         // Calling the success function with some fake data
                         var role = (user === 'dabs') ? 'student' : 'admin';
                         var data = { User : { Role : role } };
                         fn(data);
@@ -25,7 +25,7 @@ describe('LoginController', function (){
                         }
                     };
                 }
-             };
+            };
         }
     };
 

@@ -13,6 +13,9 @@ describe('FrontPageStudentController', function(){
                     fn(fakeCourses);
                     return {
                         error: function(errorFn) {
+                            if(fakeCourses.data !== 'fakedata'){
+                                errorFn();
+                            }
                         }
                     };
                 }
@@ -27,6 +30,9 @@ describe('FrontPageStudentController', function(){
                     fn(fakeEvals);
                     return {
                         error: function(errorFn){
+                            if(fakeEvals.data !== 'fakeEval'){
+                                errorFn();
+                            }
                         }
                     };
                 }
@@ -39,12 +45,41 @@ describe('FrontPageStudentController', function(){
     }));
 
     describe('$scope.myCourses', function(){
-
+        var $scope, $location, controller;
+        beforeEach(function(){
+            $scope = {
+                data : ''
+            };
+            $location = {
+                path: function(p){
+                    return p;
+                }
+            };
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                dispatchStudent: mockDispatchStudent,
+                $location: $location
+            });
+        });
     });
     
     describe('$scope.myEvaluations', function(){
-    
-    
+        var $scope, $location, controller;
+        beforeEach(function(){
+            $scope = {
+                data : ''
+            };
+            $location = {
+                path: function(p){
+                    return p;
+                }
+            };
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                dispatchStudent: mockDispatchStudent,
+                $location: $location
+            });
+        });
     });
 
 });

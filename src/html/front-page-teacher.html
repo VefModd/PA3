@@ -29,7 +29,7 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'new'">
                                 {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'open'">
                                 {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'closed'">
                                 {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>

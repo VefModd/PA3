@@ -1,4 +1,4 @@
-angular.module("angularEvaluation").factory("dispatchLogin", function($http, $rootScope, SERVER_URL) {
+angular.module("angularEvaluation").factory("dispatchLogin", function($http, SERVER_URL) {
     return  {
         login:
         function(user, pass) {

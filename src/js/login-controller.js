@@ -13,7 +13,6 @@ angular.module('angularEvaluation').controller('LoginController', ['$scope', 'di
                             }
                         }).
                         error(function() {
-                            console.log("error");
                             $scope.loginFail = true;
                         });
                 }

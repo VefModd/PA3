@@ -9,6 +9,15 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
                 console.log("evaluationTemplates - ERROR!");
             });
 
+        dispatchTeacher.evaluations().
+            success(function(data) {
+                console.log("evaluations: ", data);
+                $scope.evaluations = data;
+            }).
+            error(function() {
+                console.log("evaluations - ERROR!");
+            });
+
         $scope.newEvaluationTemplate = function() {
             $location.path('/new-evaluation-template');
         };

@@ -21,37 +21,53 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
-            <div class="col-md-4 md-offset-1 pull-left">
+
+            <div class="col-md-3 md-offset-1 pull-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        New evaluations:
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 md-offset-1 pull-left">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Open evaluations:
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                            ble
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1 pull-rigth">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Closed evaluations:
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                            ble2
+                            <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1 pull-rigth">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Evaluation templates:

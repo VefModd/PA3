@@ -18,6 +18,15 @@ angular.module("angularEvaluation").factory("dispatchTeacher",
                     }
                 };
                 return $http.post(SERVER_URL + 'evaluations', evaluation, config);
+            },
+            evaluations:
+            function() {
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.get(SERVER_URL + 'evaluations', config);
             }
         };
     });

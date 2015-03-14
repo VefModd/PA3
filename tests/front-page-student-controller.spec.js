@@ -61,6 +61,19 @@ describe('FrontPageStudentController', function(){
                 $location: $location
             });
         });
+        /*
+        it('should fail the myCourses because of invalid course', function(){
+            //Arrange
+            $scope.data = "blabladata";
+            //Act
+            mockDispatchStudent.myCourses();
+            //Assert
+            expect($scope.courseListFail).toBeTruthy();
+            expect(mockDispatchStudent.myCourses).toHaveBeenCalled();
+            expect($location.path).not.toHaveBeenCalled();
+        
+        });
+        */
     });
     
     describe('$scope.myEvaluations', function(){

@@ -28,6 +28,12 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                             resolve: {
                                 evaluation : function() {
                                     return data;
+                                },
+                                courseName : function() {
+                                    return courseName;
+                                },
+                                semester: function() {
+                                    return semester;
                                 }
                             }
                         });

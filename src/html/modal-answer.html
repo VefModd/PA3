@@ -1,23 +1,34 @@
 <div>
     <div class="modal-header">
         <h2>
-            Evaluation questions for TODOOOOO:
+            Evaluation questions for {{ courseName }}:
         </h2>
     </div>
 
     <div class="modal-body">
         <form name="answerEvaluationForm" novalidate> <!-- TODO ng-submit -->
 
-            <div class="form-group">
-                <p> HERE COMES BASIC INFO QUESTIONS </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Course questions:
+                </div>
+                <div class="panel-body">
+                    <div class="form-group"
+                        ng-repeat="courseQuestion in evaluation.CourseQuestions">
+                        {{ courseQuestion.Text }}
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <p> HERE COMES COURSE QUESTION QUESTIONS </p>
-            </div>
-
-            <div class="form-group">
-                <p> HERE COMES TEACHER QUESTION QUESTIONS </p>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Teacher questions:
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <p> hothot </p>
+                    </div>
+                </div>
             </div>
 
             <div class="modal-footer">

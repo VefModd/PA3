@@ -15,10 +15,10 @@
                 <div class="panel-body">
                     <div class="form-group"
                         ng-repeat="courseQuestion in evaluation.CourseQuestions">
-                        <!--
-                        <evaluation-question ng-model="courseQuestion"></evaluation-question>
-                        -->
-                        {{ courseQuestion.Text }}
+
+                        <evaluation-question ng-model="courseQuestion">
+                        </evaluation-question>
+
                     </div>
                 </div>
             </div>
@@ -35,7 +35,8 @@
                         <div class="form-group"
                             ng-repeat="teacherQuestion in evaluation.TeacherQuestions">
                             <!--
-                            <evaluation-question ng-model="teacherQuestion"></evaluation-question>
+                            <evaluation-question ng-model="teacherQuestion">
+                            </evaluation-question>
                             -->
                             {{ teacherQuestion.Text }}
                         </div>

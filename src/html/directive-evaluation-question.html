@@ -1,0 +1,23 @@
+<div>
+    {{ question.Text }}
+</div>
+
+<div ng-show="question.Type === 'text'">
+    <p>
+        This is a text question
+    </p>
+    <textarea>
+    </textarea>
+</div>
+
+<div ng-show="question.Type === 'single'">
+    <p>
+        This is a single question
+    </p>
+</div>
+
+<div ng-show="question.Type === 'multiplte'">
+    <p>
+        This is a multiple question
+    </p>
+</div>

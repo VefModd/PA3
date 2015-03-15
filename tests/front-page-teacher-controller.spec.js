@@ -3,11 +3,48 @@ describe('FrontPageTeacherController', function(){
 
     var $controller;
 
+    var mockDispatchTeacher = {
+        evaluationTemplates: function() {
+            return {
+                success: function(fn) {
+                    var fakeEvalTpls = {
+                        data: 'fakeTemplate'
+                    };
+                    fn(fakeEvalTpls);
+                    return {
+                        error: function(errorFn) {
+                            if (fakeEvalTpls.data !== 'fakeTemplate'){
+                                errorFn();
+                            }
+                        }
+                    };
+                }
+            };
+        },
+        evaluations: function() {
+            return {
+                success: function(fn) {
+                    var fakeEvals = {
+                        data: 'fakeEval'
+                    };
+                    return {
+                        error: function(errorFn) {
+                            if (fakeEvals.data !== 'fakeEval'){
+                                errorFn();
+                            }
+                        }
+                    };
+                }
+            };
+        }
+    };
+
+
     beforeEach(inject(function (_$controller_){
         $controller = _$controller_;
     }));
 
-    describe('$scope.newEvaluationTemplate', function(){
+    describe('$scope.evaluationTemplates', function(){
         var $location, $scope, controller;
         beforeEach(function(){
             //constructing a fake environment

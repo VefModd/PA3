@@ -67,7 +67,7 @@
                         ng-class="{ 'has-error': templateForm.courseQuestions.$invalid && templateForm.$submitted }">
                         <ul class="list-group" ng-show="evaluationTemplate.CourseQuestions.length != 0">
                             <li class="list-group-item" ng-repeat="courseQuestion in evaluationTemplate.CourseQuestions">
-                            {{ courseQuestion.Text }}
+                            {{ courseQuestion.Text }} - {{ courseQuestion.Type }}
                             </li>
                         </ul>
 
@@ -105,7 +105,7 @@
 
                         <ul class="list-group" ng-show="evaluationTemplate.TeacherQuestions.length != 0">
                             <li class="list-group-item" ng-repeat="teacherQuestion in evaluationTemplate.TeacherQuestions">
-                            {{ teacherQuestion.Text }}
+                            {{ teacherQuestion.Text }} - {{ teacherQuestion.Type }}
                             </li>
                         </ul>
 

@@ -3,6 +3,37 @@ describe('FrontPageTeacherController', function(){
 
     var $controller;
 
+    var mockDispatchTeacher = {
+        evaluationTemplates: function() {
+            return {
+                success: function(fn) {
+                    var fakeEvalTpls = {
+                        data: 'fakeTemplate'
+                    };
+                    fn(fakeEvalTpls);
+                    return {
+                        error: function(errorFn) {
+                            if (fakeEvalTpls.data !== 'fakeTemplate'){
+                                errorFn();
+                            }
+                        }
+                    };
+                }
+            };
+        },
+        evaluations: function() {
+            return {
+                success: function(fn) {
+                    return {
+                        error: function(errorFn) {
+                        }
+                    };
+                }
+            };
+        }
+    };
+
+
     beforeEach(inject(function (_$controller_){
         $controller = _$controller_;
     }));

@@ -35,6 +35,16 @@ describe('FrontPageStudentController', function(){
                     };
                 }
             };
+        },
+        getEvaluation: function(){
+            return{
+                success: function(fn){
+                    return {
+                        error: function(errorFn){
+                        }
+                    };
+                }
+            };
         }
     };
 

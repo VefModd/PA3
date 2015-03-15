@@ -10,9 +10,11 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
 
             dispatchStudent.myEvaluations().
                 success(function(data) {
+                    console.log("SUCCESS! - data: ", data);
                     $scope.evaluations = data;
                 }).
                 error(function() {
+                    console.log("ERROR!");
                     $scope.evalListFail = true;
                 });
         }]);

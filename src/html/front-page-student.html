@@ -1,42 +1,46 @@
 <div class="row">
-    <div class="jumbotron">
-        <h1>Welcome {{ data.User.FullName }}!</h1>
-        <p>
-        Please take your time to answer these evaluations questions.
-        It is really important for the our school to get feedback from students on the courses and teaching methods.
-        Feel free to express your feelings.
-        We really appriciate it!
-        </p>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="jumbotron">
+            <h1>Welcome {{ data.User.FullName }}!</h1>
+            <p>
+                Please take your time to answer these evaluations questions.
+                It is really important for the our school to get feedback from students on the courses and teaching methods.
+                Feel free to express your feelings.
+                We really appriciate it!
+            </p>
+        </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-6 md-offset-1 pull-left">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Your courses:
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="course in courses">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-6 md-offset-1 pull-left">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Your courses:
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="course in courses">
                         {{ course.CourseID }} - {{ course.Name }}
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-6 md-offset-1 pull-rigth">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Your evaluations:
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="evaluation in evaluations">
-                    {{ evaluation.CourseId }}
-                    </li>
-                </ul>
+        <div class="col-md-6 md-offset-1 pull-rigth">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Your evaluations:
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="evaluation in evaluations">
+                            {{ evaluation.CourseID }} - {{ evaluation.CourseName }} - {{ evaluation.TemplateName }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -24,8 +24,14 @@ describe('FrontPageTeacherController', function(){
         evaluations: function() {
             return {
                 success: function(fn) {
+                    var fakeEvals = {
+                        data: 'fakeEval'
+                    };
                     return {
                         error: function(errorFn) {
+                            if (fakeEvals.data !== 'fakeEval'){
+                                errorFn();
+                            }
                         }
                     };
                 }
@@ -38,7 +44,7 @@ describe('FrontPageTeacherController', function(){
         $controller = _$controller_;
     }));
 
-    describe('$scope.newEvaluationTemplate', function(){
+    describe('$scope.evaluationTemplates', function(){
         var $location, $scope, controller;
         beforeEach(function(){
             //constructing a fake environment

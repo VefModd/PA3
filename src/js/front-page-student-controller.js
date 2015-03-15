@@ -19,27 +19,27 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
             $scope.answer = function(courseName, semester, evaluationID) {
                 dispatchStudent.getEvaluation(courseName, semester, evaluationID).
                     success(function(data) {
-                        console.log("SUCCESS: $scope.evaluation ", data);
-                        $scope.evaluation = data;
+                        console.log("SUCCESS - answer, data: ", data);
+
+                        var modalInstance = $modal.open({
+                            templateUrl: 'src/html/modal-answer.html',
+                            controller: 'ModalAnswerController',
+                            size: 'lg',
+                            resolve: {
+                                evaluation : function() {
+                                    return data;
+                                }
+                            }
+                        });
+
+                        modalInstance.result.then(function(data) {
+                            console.log("model answering: ", data);
+                        });
+
                     }).
                     error(function() {
                         console.log("ERROR!");
                     });
-
-                var modalInstance = $modal.open({
-                    templateUrl: 'src/html/modal-answer.html',
-                    controller: 'ModalAnswerController',
-                    size: 'lg',
-                    resolve: {
-                        evaluation : function() {
-                            return $scope.evaluation;
-                        }
-                    }
-                });
-
-                modalInstance.result.then(function(data) {
-                    console.log("model answering: ", data);
-                });
             };
 
             $scope.getResultsById = function(evaluationID) {

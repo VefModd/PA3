@@ -1,21 +1,21 @@
 describe('FrontPageStudentController', function(){
     beforeEach(module('angularEvaluation'));
 
-    var $controller;
+    var $controller,
+        dispatchStudent,
+        ok;
 
     var mockDispatchStudent = {
         myCourses: function() {
             return {
                 success: function(fn){
                     var fakeCourses = {
-                        data: 'fakeData'
+                        data: 'fakeCourse'
                     };
-                    fn(fakeCourses);
+                    if(ok){ fn(fakeCourses); }
                     return {
                         error: function(errorFn) {
-                            if(fakeCourses.data !== 'fakedata'){
-                                errorFn();
-                            }
+                            if(!ok) { errorFn(); }
                         }
                     };
                 }
@@ -27,12 +27,20 @@ describe('FrontPageStudentController', function(){
                     var fakeEvals = {
                         data: 'fakeEval'
                     };
-                    fn(fakeEvals);
+                    if(ok){ fn(fakeEvals); }
                     return {
                         error: function(errorFn){
-                            if(fakeEvals.data !== 'fakeEval'){
-                                errorFn();
-                            }
+                            if(!ok){ errorFn(); }
+                        }
+                    };
+                }
+            };
+        },
+        getEvaluation: function(){
+            return{
+                success: function(fn){
+                    return {
+                        error: function(errorFn){
                         }
                     };
                 }
@@ -44,55 +52,60 @@ describe('FrontPageStudentController', function(){
         $controller = _$controller_;
     }));
 
-    describe('$scope.myCourses', function(){
-        var $scope, $location, controller;
+    describe('myCourses, myEvaluations SUCCESS', function(){
+        var $scope, controller;
         beforeEach(function(){
-            $scope = {
-                data : ''
-            };
-            $location = {
-                path: function(p){
-                    return p;
-                }
-            };
+            //constructing a fake environment
+            $scope = {};
+            //when true, success function is called
+            ok = true;
+            //constructing controller
             controller = $controller('FrontPageStudentController', {
                 $scope: $scope,
-                dispatchStudent: mockDispatchStudent,
-                $location: $location
+                dispatchStudent: mockDispatchStudent
             });
         });
-        /*
-        it('should fail the myCourses because of invalid course', function(){
-            //Arrange
-            $scope.data = "blabladata";
-            //Act
+        it("should test that data goes through to myCourses", function(){
+            //Act:
             mockDispatchStudent.myCourses();
-            //Assert
-            expect($scope.courseListFail).toBeTruthy();
-            expect(mockDispatchStudent.myCourses).toHaveBeenCalled();
-            expect($location.path).not.toHaveBeenCalled();
-        
+            //Assert:
+            expect($scope.courses).toBeDefined();
+            expect($scope.courseListFail).not.toBeDefined();
         });
-        */
+        it("should test that data goes through to myEvaluations", function(){
+            //Act:
+            mockDispatchStudent.myEvaluations();
+            //Assert:
+            expect($scope.evaluations).toBeDefined();
+            expect($scope.evalListFail).not.toBeDefined();
+        });
     });
-    
-    describe('$scope.myEvaluations', function(){
-        var $scope, $location, controller;
+    describe('myCourses, myEvaluations ERROR', function(){
+        var $scope, controller;
         beforeEach(function(){
-            $scope = {
-                data : ''
-            };
-            $location = {
-                path: function(p){
-                    return p;
-                }
-            };
+            //constructing a fake environment
+            $scope = {};
+            //when false, error function is called
+            ok = false;
+            //constructing controller
             controller = $controller('FrontPageStudentController', {
                 $scope: $scope,
-                dispatchStudent: mockDispatchStudent,
-                $location: $location
+                dispatchStudent: mockDispatchStudent
             });
         });
+        it("should test that data goes through to myCourses", function(){
+            //Act:
+            mockDispatchStudent.myCourses();
+            //Assert:
+            expect($scope.myCourses.length).toBe(0);
+            expect($scope.courseListFail).toBeDefined();
+        });
+        it("should test that data goes through to myEvaluations", function(){
+            //Act:
+            mockDispatchStudent.myEvaluations();
+            //Assert:
+            expect($scope.myEvaluations.length).toBe(0);
+            expect($scope.evalListFail).toBeDefined();
+        });
     });
-
 });

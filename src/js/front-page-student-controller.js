@@ -16,6 +16,9 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                     $scope.evalListFail = true;
                 });
 
+            $scope.myCourses = [];
+            $scope.myEvaluations = [];
+
             $scope.answer = function(courseName, courseID, semester, evaluationID) {
                 dispatchStudent.getEvaluation(courseID, semester, evaluationID).
                     success(function(data) {

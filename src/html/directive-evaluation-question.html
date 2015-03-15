@@ -1,12 +1,18 @@
-<div>
-    {{ question.Text }}
-</div>
+<div class="form-group"
+    ng-show="question.Type === 'text'">
+    <!--ng-class="{ 'has-error': answerEvaluationForm.{{question.ID}}.$invalid && answerEvaluationForm.$submitted }">-->
 
-<div ng-show="question.Type === 'text'">
-    <p>
-        This is a text question
-    </p>
-    <textarea>
+    <label for="{{question.ID}}" class="control-label">
+        {{ question.Text }} - {{ question.ID }}
+    </label>
+
+    <textarea cols="1"
+        rows="5"
+        name="{{question.ID}}"
+        ng-model="answer.Value"
+        required
+        ng-maxlength="100"
+        class="form-control">
     </textarea>
 </div>
 
@@ -16,8 +22,10 @@
     </p>
 </div>
 
-<div ng-show="question.Type === 'multiplte'">
+<div ng-show="question.Type === 'multiple'">
     <p>
         This is a multiple question
     </p>
 </div>
+
+

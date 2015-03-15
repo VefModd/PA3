@@ -1,8 +1,9 @@
 angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope', '$modalInstance', 'evaluation', 'courseName', 'courseID', 'semester', 'dispatchModalAnswer',
     function ($scope, $modalInstance, evaluation, courseName, courseID, semester, dispatchModalAnswer) {
         $scope.answer = {
-            "a": undefined,
-            "b": undefined
+            //QuestionID: 0,
+            TeacherSSN: undefined,
+            Value: undefined
         };
 
         console.log("ModalAnswerController: evaluation=> ", evaluation);
@@ -31,7 +32,10 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
 
         $scope.finishEvaluation = function() {
             if($scope.answerEvaluationForm.$valid) {
+                console.log("answerEvaluation is valid!");
                 $modalInstance.close($scope.answer);
+            } else {
+                console.log("answerEvaluation is NOT valid!");
             }
         };
     }]);

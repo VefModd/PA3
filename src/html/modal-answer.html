@@ -6,7 +6,7 @@
     </div>
 
     <div class="modal-body">
-        <form name="answerEvaluationForm" novalidate> <!-- TODO ng-submit -->
+        <form name="answerEvaluationForm" novalidate ng-submit="finishEvaluation()">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -16,7 +16,7 @@
                     <div class="form-group"
                         ng-repeat="courseQuestion in evaluation.CourseQuestions">
 
-                        <evaluation-question ng-model="courseQuestion">
+                        <evaluation-question ng-model="courseQuestion" required="true">
                         </evaluation-question>
 
                     </div>
@@ -34,11 +34,10 @@
 
                         <div class="form-group"
                             ng-repeat="teacherQuestion in evaluation.TeacherQuestions">
-                            <!--
-                            <evaluation-question ng-model="teacherQuestion">
+
+                            <evaluation-question ng-model="teacherQuestion" required="false">
                             </evaluation-question>
-                            -->
-                            {{ teacherQuestion.Text }}
+
                         </div>
                     </div>
                 </div>

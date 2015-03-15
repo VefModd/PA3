@@ -9,6 +9,11 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
         console.log("ModalAnswerController: courseName=> ", courseName);
         console.log("ModalAnswerController: semester=> ", semester);
         console.log("ModalAnswerController: evaluation.ID=> ", evaluation.ID);
+        $scope.evaluation = evaluation;
+        $scope.courseName = courseName;
+        $scope.semester = semester;
+
+
 
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');

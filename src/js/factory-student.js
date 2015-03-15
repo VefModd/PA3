@@ -22,12 +22,13 @@ angular.module("angularEvaluation").factory("dispatchStudent",
             },
 
             getEvaluation:
-            function() {
+            function(course, semester, evalID) {
                 var config = {
                     headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
                     }
                 };
-                return $http.get(SERVER_URL, config);
+                return $http.get(SERVER_URL + 'courses/' + course + '/' + semester + '/evaluations/' + evalID, config);
             },
 
             getEvaluationResultsById:

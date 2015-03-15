@@ -21,6 +21,14 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                 console.log("coursName: ", courseName);
                 console.log("semester: ", semester);
                 console.log("evaluationID: ", evaluationID);
+
+                dispatchStudent.getEvaluation(courseName, semester, evaluationID).
+                    success(function(data) {
+                        console.log("SUCCESS! - data: ", data);
+                    }).
+                    error(function() {
+                        console.log("ERROR!");
+                    });
             };
 
             $scope.getResultsById = function(evaluationID) {

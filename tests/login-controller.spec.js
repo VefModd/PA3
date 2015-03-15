@@ -1,7 +1,7 @@
 describe('LoginController', function (){
     beforeEach(module('angularEvaluation'));
 
-    var $controller;
+    var $controller, $location, $rootScope;
     // Mock of the dispatch factory where login authentication
     // is requested from the API server.
     var mockDispatch = {
@@ -29,28 +29,22 @@ describe('LoginController', function (){
         }
     };
 
-    beforeEach(inject(function (_$controller_) {
+    beforeEach(inject(function (_$controller_, _$location_, _$rootScope_) {
         $controller = _$controller_;
+        $location = _$location_;
+        $rootScope = _$rootScope_;
     }));
 
     describe('$scope.login', function () {
-        var $scope, $location, controller, $rootScope;
+        var $scope, controller;
         beforeEach(function() {
             // Constructing a fake enviroment
-            // (scope data and location function)
             $scope = {
                 loginForm: { $valid: true },
                 user: {
                     name: '',
                     pass: ''
                 }
-            };
-            $location = {
-                path : function (p) {
-                           return p;
-                       }
-            };
-            $rootScope = {
             };
 
             // Spying on functions that should or shouldn't be called
@@ -91,7 +85,7 @@ describe('LoginController', function (){
             // Assert:
             expect(mockDispatch.login).toHaveBeenCalled();
             expect($scope.loginFail).not.toBeTruthy();
-            expect($location.path).toHaveBeenCalled();
+            expect($location.path).toHaveBeenCalledWith('/front-page-student');
             expect($rootScope.data).toBeDefined();
         });
 
@@ -106,7 +100,7 @@ describe('LoginController', function (){
             // Assert:
             expect(mockDispatch.login).toHaveBeenCalled();
             expect($scope.loginFail).not.toBeTruthy();
-            expect($location.path).toHaveBeenCalled();
+            expect($location.path).toHaveBeenCalledWith('/front-page-teacher');
             expect($rootScope.data).toBeDefined();
         });
 

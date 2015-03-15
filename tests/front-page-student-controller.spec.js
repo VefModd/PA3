@@ -36,11 +36,17 @@ describe('FrontPageStudentController', function(){
                 }
             };
         },
-        getEvaluation: function(){
+        getEvaluation: function(courseName, courseID, semester, evaluationId){
             return{
                 success: function(fn){
+                    if(courseID === 1337){
+                        fn();
+                    }
                     return {
                         error: function(errorFn){
+                            if(courseID !== 1337){
+                                errorFn();
+                            }
                         }
                     };
                 }

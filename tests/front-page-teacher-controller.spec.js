@@ -3,7 +3,12 @@ describe('FrontPageTeacherController', function(){
 
     var $controller,
         dispatchTeacher,
-        ok;
+        ok,
+        $scope = {},
+        controller,
+        $locationi,
+        $modal,
+        $route;
 
     var mockDispatchTeacher = {
         evaluationTemplates: function() {
@@ -39,12 +44,12 @@ describe('FrontPageTeacherController', function(){
         addEvaluation: function(eval) {
             return {
                 success: function(fn) {
-                    if(eval.ID === 1337){
+                    if(eval.TemplateID === 1337){
                         fn()
                     }
                     return {
                         error: function(errorFn) {
-                            if(eval.ID !== 1337){
+                            if(eval.TemplateID !== 1337){
                                 errorFn();
                             }
                         }
@@ -55,16 +60,15 @@ describe('FrontPageTeacherController', function(){
     };
 
 
-    beforeEach(inject(function (_$controller_, _$rootScope_){
+    beforeEach(inject(function (_$controller_, _$location_, _$modal_, _$route_){
         $controller = _$controller_;
-        $rootScope = _$rootScope_;
+        $location = _$location_;
+        $modal = _$modal_;
+        $route = _$route_;
     }));
 
     describe('evaluationTemplates, evaluations SUCCESS', function(){
-        var $scope, controller, $rootScope;
         beforeEach(function(){
-            //constructing a fake environment
-            $scope = {};
             // When true success function is called
             ok = true;
             //constructing the controller
@@ -93,12 +97,10 @@ describe('FrontPageTeacherController', function(){
     });
 
     describe('evaluationTemplates, evaluations ERROR', function(){
-        var $scope, controller, $rootScope;
         beforeEach(function(){
-            //constructing a fake environment
-            $scope = {};
             // When true success function is called
             ok = false;
+            //constructing the controller
             //constructing the controller
             controller = $controller('FrontPageTeacherController', {
                 $scope : $scope,
@@ -123,4 +125,69 @@ describe('FrontPageTeacherController', function(){
             expect($scope.evalTplsFail).toBeDefined();
         });
     });
+
+    describe('redirecting to new evaluation template', function() {
+        beforeEach(function() {
+            spyOn($location, 'path');
+            controller = $controller('FrontPageTeacherController', {
+                $scope: $scope,
+                $location: $location,
+                dispatchTeacher: mockDispatchTeacher
+            });
+        });
+
+        it('should redirect to correct location', function() {
+            $scope.newEvaluationTemplate();
+            expect($location.path).toHaveBeenCalledWith('/new-evaluation-template');
+        });
+    });
+
+    describe('new evaluation', function() {
+        var fakeModal = {
+            result: {
+                then: function(confirmCallback) {
+                    // Happy modal :)
+                    var fakeEvaluation = {
+                        TemplateID: 1337,
+                        StartDate: new Date(),
+                        EndDate: new Date()
+                    };
+                    confirmCallback(fakeEvaluation);
+                }
+            },
+        };
+
+        beforeEach(function() {
+            spyOn($modal, 'open').and.returnValue(fakeModal);
+            spyOn($route, 'reload');
+
+            controller = $controller('FrontPageTeacherController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchTeacher: mockDispatchTeacher
+            });
+
+        });
+
+        it('should succeed in adding the template', function() {
+            // Act:
+            $scope.newEvaluation(1337);
+
+            // Assert:
+            expect($scope.evaluation.TemplateID).toBe(1337);
+            expect($modal.open).toHaveBeenCalled();
+            expect($route.reload).toHaveBeenCalled();
+        });
+
+        it('should fail in adding the template', function() {
+            // Act:
+            $scope.newEvaluation(80085);
+
+            // Assert:
+            expect($scope.evaluation.TemplateID).not.toBe(1337);
+            expect($modal.open).toHaveBeenCalled();
+            expect($route.reload).not.toHaveBeenCalled();
+        });
+    });
+
 });

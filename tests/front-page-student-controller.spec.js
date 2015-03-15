@@ -1,21 +1,21 @@
 describe('FrontPageStudentController', function(){
     beforeEach(module('angularEvaluation'));
 
-    var $controller;
+    var $controller,
+        dispatchStudent,
+        ok;
 
     var mockDispatchStudent = {
         myCourses: function() {
             return {
                 success: function(fn){
                     var fakeCourses = {
-                        data: 'fakeData'
+                        data: 'fakeCourse'
                     };
-                    fn(fakeCourses);
+                    if(ok){ fn(fakeCourses); }
                     return {
                         error: function(errorFn) {
-                            if(fakeCourses.data !== 'fakedata'){
-                                errorFn();
-                            }
+                            if(!ok) { errorFn(); }
                         }
                     };
                 }
@@ -27,12 +27,10 @@ describe('FrontPageStudentController', function(){
                     var fakeEvals = {
                         data: 'fakeEval'
                     };
-                    fn(fakeEvals);
+                    if(ok){ fn(fakeEvals); }
                     return {
                         error: function(errorFn){
-                            if(fakeEvals.data !== 'fakeEval'){
-                                errorFn();
-                            }
+                            if(!ok){ errorFn(); }
                         }
                     };
                 }
@@ -44,21 +42,17 @@ describe('FrontPageStudentController', function(){
         $controller = _$controller_;
     }));
 
-    describe('$scope.myCourses', function(){
-        var $scope, $location, controller;
+    describe('myCourses SUCCESS', function(){
+        var $scope, controller;
         beforeEach(function(){
-            $scope = {
-                data : ''
-            };
-            $location = {
-                path: function(p){
-                    return p;
-                }
-            };
+            //constructing a fake environment
+            $scope = {};
+            //when true success function is called
+            ok = true;
+            //constructing controller
             controller = $controller('FrontPageStudentController', {
                 $scope: $scope,
-                dispatchStudent: mockDispatchStudent,
-                $location: $location
+                dispatchStudent: mockDispatchStudent
             });
         });
         /*

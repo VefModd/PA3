@@ -26,9 +26,9 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
 
         $scope.newEvaluation = function(templateID) {
             $scope.evaluation = {
-                "TemplateID": templateID,
-                "StartDate": undefined,
-                "EndDate": undefined
+                TemplateID: templateID,
+                StartDate: undefined,
+                EndDate: undefined
             };
 
             //$scope.evaluation.TemplateID = templateID;

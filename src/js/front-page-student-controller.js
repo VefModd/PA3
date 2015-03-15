@@ -16,10 +16,11 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                     $scope.evalListFail = true;
                 });
 
-            $scope.answer = function(courseName, semester, evaluationID) {
-                dispatchStudent.getEvaluation(courseName, semester, evaluationID).
+            $scope.answer = function(courseName, courseID, semester, evaluationID) {
+                dispatchStudent.getEvaluation(courseID, semester, evaluationID).
                     success(function(data) {
                         console.log("SUCCESS - answer, data: ", data);
+                        console.log("courseName: ", courseName);
 
                         var modalInstance = $modal.open({
                             templateUrl: 'src/html/modal-answer.html',
@@ -31,6 +32,9 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                                 },
                                 courseName : function() {
                                     return courseName;
+                                },
+                                courseID : function() {
+                                    return courseID;
                                 },
                                 semester: function() {
                                     return semester;

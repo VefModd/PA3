@@ -142,7 +142,6 @@ describe('FrontPageTeacherController', function(){
         });
     });
 
-
     describe('new evaluation', function() {
         var fakeModal = {
             result: {
@@ -170,7 +169,7 @@ describe('FrontPageTeacherController', function(){
 
         });
 
-        it('should...', function() {
+        it('should succeed in adding the template', function() {
             // Act:
             $scope.newEvaluation(1337);
 
@@ -180,7 +179,7 @@ describe('FrontPageTeacherController', function(){
             expect($route.reload).toHaveBeenCalled();
         });
 
-        it('should...', function() {
+        it('should fail in adding the template', function() {
             // Act:
             $scope.newEvaluation(80085);
 

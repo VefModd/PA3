@@ -9,11 +9,14 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         link: function(scope, element, attributes, answerEvaluationForm) {
             // (scope, element, attributes)
 
-            console.log("inside directive: ", answerEvaluationForm);
             scope.answerEvaluationForm = answerEvaluationForm;
+            scope.nameForValidation = scope.question.Text + scope.question.ID;
+            scope.nameForValidation = scope.nameForValidation.replace(/ /g,'');
             if(attributes.required) {
                 scope.required = true;
             }
+            console.log("validation string ", scope.nameForValidation);
+            console.log("required? ", scope.required);
         }
     };
 });

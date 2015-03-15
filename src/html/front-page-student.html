@@ -37,7 +37,14 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="evaluation in evaluations">
-                            {{ evaluation.CourseID }} - {{ evaluation.CourseName }} - {{ evaluation.TemplateName }}
+                            <button type="button"
+                                class="btn btn-xs btn-primary pull-right"
+                                >
+                                Answer!
+                            </button>
+                            <p>
+                                {{ evaluation.CourseID }} - {{ evaluation.CourseName }} - {{ evaluation.TemplateName }}
+                            </p>
                         </li>
                     </ul>
                 </div>

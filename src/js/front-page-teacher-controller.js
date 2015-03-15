@@ -21,6 +21,7 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
             });
 
         $scope.evaluations = [];
+        $scope.evaluationTemplates = [];
 
         $scope.newEvaluationTemplate = function() {
             $location.path('/new-evaluation-template');

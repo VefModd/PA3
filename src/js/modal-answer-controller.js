@@ -18,6 +18,7 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
         dispatchModalAnswer.getTeachers($scope.courseID, $scope.semester).
             success(function(data) {
                 console.log("SUCCESS - getTeachers - data: ", data);
+                $scope.teachers = data;
             }).
             error(function() {
                 console.log("ERROR - getTeachers");

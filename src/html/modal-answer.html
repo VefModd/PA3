@@ -25,8 +25,14 @@
                     Teacher questions:
                 </div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <p> hothot </p>
+                    <div ng-repeat="teacher in teachers">
+
+                        <legend>{{ teacher.FullName }}</legend>
+
+                        <div class="form-group"
+                            ng-repeat="teacherQuestion in evaluation.TeacherQuestions">
+                            {{ teacherQuestion.Text }}
+                        </div>
                     </div>
                 </div>
             </div>

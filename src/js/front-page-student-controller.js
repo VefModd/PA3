@@ -1,5 +1,5 @@
-angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', 'dispatchStudent',
-        function($scope, $routeParams, $route, dispatchStudent) {
+angular.module('angularEvaluation').controller('FrontPageStudentController', ['$scope', '$routeParams', '$route', '$modal', 'dispatchStudent',
+        function($scope, $routeParams, $route, $modal, dispatchStudent) {
             dispatchStudent.myCourses().
                 success(function(data) {
                     $scope.courses = data;
@@ -17,14 +17,25 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                 });
 
             $scope.answer = function(courseName, semester, evaluationID) {
-                console.log("inside answer!");
-                console.log("coursName: ", courseName);
-                console.log("semester: ", semester);
-                console.log("evaluationID: ", evaluationID);
-
                 dispatchStudent.getEvaluation(courseName, semester, evaluationID).
                     success(function(data) {
-                        console.log("SUCCESS! - data: ", data);
+                        console.log("SUCCESS - answer, data: ", data);
+
+                        var modalInstance = $modal.open({
+                            templateUrl: 'src/html/modal-answer.html',
+                            controller: 'ModalAnswerController',
+                            size: 'lg',
+                            resolve: {
+                                evaluation : function() {
+                                    return data;
+                                }
+                            }
+                        });
+
+                        modalInstance.result.then(function(data) {
+                            console.log("model answering: ", data);
+                        });
+
                     }).
                     error(function() {
                         console.log("ERROR!");

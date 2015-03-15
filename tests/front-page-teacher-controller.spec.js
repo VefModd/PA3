@@ -12,14 +12,10 @@ describe('FrontPageTeacherController', function(){
                     var fakeEvalTpls = {
                         data: "fakeTemplate"
                     };
-                    if(ok) {
-                        fn(fakeEvalTpls);
-                    }
+                    if(ok) { fn(fakeEvalTpls); }
                     return {
                         error: function(errorFn) {
-                            if(!ok) {
-                                errorFn();
-                            }
+                            if(!ok) { errorFn(); }
                         }
                     };
                 }
@@ -31,11 +27,10 @@ describe('FrontPageTeacherController', function(){
                     var fakeEvals = {
                         data: "fakeEval"
                     };
+                    if(ok) { fn(fakeEvals); }
                     return {
                         error: function(errorFn) {
-                            if (fakeEvals.data !== "fakeEval"){
-                                errorFn();
-                            }
+                            if(!ok) { errorFn(); }
                         }
                     };
                 }
@@ -65,28 +60,37 @@ describe('FrontPageTeacherController', function(){
         $rootScope = _$rootScope_;
     }));
 
-    describe('$scope.evaluationTemplates', function(){
-        var $location, $scope, controller, $rootScope;
+    describe('evaluationTemplates, evaluations SUCCESS', function(){
+        var $scope, controller, $rootScope;
         beforeEach(function(){
             //constructing a fake environment
-            $location = {
-                path : function(p) {
-                    return p;
-                }
-            };
             $scope = {};
-            spyOn($location, 'path');
-
+            // When true success function is called
+            ok = true;
             //constructing the controller
             controller = $controller('FrontPageTeacherController', {
                 $scope : $scope,
-                $location : $location,
                 dispatchTeacher: mockDispatchTeacher
             });
         });
-        it('should test', function(){
-            ok = true;
+        it('should test that data goes through', function(){
+            // Arrange:
+
+            // Act:
             mockDispatchTeacher.evaluationTemplates();
+
+            // Assert:
+            expect($scope.evaluationTemplates).toBeDefined();
+        });
+
+        it('should test that data goes through', function(){
+            // Arrange:
+
+            // Act:
+            mockDispatchTeacher.evaluations();
+
+            // Assert:
+            expect($scope.evaluations).toBeDefined();
         });
     });
 });

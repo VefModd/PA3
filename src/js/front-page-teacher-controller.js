@@ -7,6 +7,7 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
             }).
             error(function() {
                 console.log("evaluationTemplates - ERROR!");
+                $scope.evalTplsFail = true;
             });
 
         dispatchTeacher.evaluations().
@@ -16,6 +17,7 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
             }).
             error(function() {
                 console.log("evaluations - ERROR!");
+                $scope.evalsFail = true;
             });
 
         $scope.evaluations = [];

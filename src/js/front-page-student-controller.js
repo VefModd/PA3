@@ -6,7 +6,7 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                 }).
                 error(function() {
                     $scope.courseListFail = true;
-                });i
+                });
 
             dispatchStudent.myEvaluations().
                 success(function(data) {

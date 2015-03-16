@@ -1,14 +1,10 @@
 describe('FrontPageTeacherController', function(){
     beforeEach(module('angularEvaluation'));
 
-    var $controller,
-        dispatchTeacher,
+    var dispatchTeacher,
         ok,
         $scope = {},
-        controller,
-        $locationi,
-        $modal,
-        $route;
+        controller;
 
     var mockDispatchTeacher = {
         evaluationTemplates: function() {

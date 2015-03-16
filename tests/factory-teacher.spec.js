@@ -2,8 +2,6 @@ describe('dispatchTeacher', function() {
     beforeEach(module('angularEvaluation'));
 
     var factory,
-        $httpBackend,
-        $rootScope,
         url,
         template = "WOW SUCH FAKE";
 

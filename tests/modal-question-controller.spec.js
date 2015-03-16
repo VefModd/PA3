@@ -79,9 +79,43 @@ describe('ModalQuestionController', function(){
             expect(modalInstance.close).toHaveBeenCalled();
         });
 
-    
-    
-    
-    
+        it('should be a valid text question and let answers be empty', function(){
+            //Arrange:
+            scope.question.Type = 'text';
+            scope.newCourseQuestionForm = {
+                questionType: { $invalid: undefined },
+                questionAnswers: { $invalid: undefined },
+                $valid: undefined
+            };
+            //Act:
+            scope.finish();
+            //Assert:
+            expect(scope.newCourseQuestionForm.$valid).toBeTruthy();
+            expect(scope.question.Answers).toEqual([]);
+            expect(modalInstance.close).toHaveBeenCalled();
+        });
+
+        it('should have showInputAnswer as true', function(){
+            scope.inputAnswer();
+            expect(scope.showInputAnswer).toBeTruthy();
+        });
+
+        it('should add answer if answer form was valid', function(){
+            //Arrange:
+            scope.answerForm = { 
+                $valid: true,
+                $submitted : undefined
+            };
+            scope.newCourseQuestionForm = {
+                questionAnswers: { $invalid: undefined },
+            };
+            //Act:
+            scope.addAnswer();
+            //Assert:
+            expect(scope.showInputAnswer).not.toBeTruthy();
+            expect(scope.answer).toBe("");
+            expect(scope.answerForm.$submitted).not.toBeTruthy();
+            expect(scope.newCourseQuestionForm.questionAnswers.$invalid).not.toBeTruthy();
+        });
     });
 });

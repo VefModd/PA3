@@ -27,13 +27,11 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 scope.id += attributes.teacher;
             }
 
-            /*
             scope.question.Result[scope.id] = {
                 QuestionID : scope.question.ID,
                 TeacherSSN : attributes.teacher,
                 Value : []
             };
-            */
 
             console.log("ID: ", scope.id);
 

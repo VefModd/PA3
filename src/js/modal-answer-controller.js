@@ -30,8 +30,8 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
                 console.log("scope.evaluation.teacherQ: ", $scope.evaluation);
 
                 $scope.result = {
-                    CourseResult : $scope.evaluation.CourseQuestions.Result,
-                    TeacherResult : $scope.evaluation.TeacherQuestions.Result
+                    CourseResult : $scope.evaluation.CourseQuestions,
+                    TeacherResult : $scope.evaluation.TeacherQuestions
                 };
 
                 $modalInstance.close($scope.result);

@@ -23,8 +23,9 @@ angular.module('angularEvaluation').controller('ModalQuestionController', ['$sco
                 $scope.newCourseQuestionForm.questionType.$invalid = true;
                 $scope.newCourseQuestionForm.$valid = false;
             }
-            else if(($scope.question.Type === 'single' || $scope.question.Type === 'multiple') &&
-                $scope.question.Answers.length === 0) {
+            else if(($scope.question.Type === 'single' ||
+                     $scope.question.Type === 'multiple') &&
+                     $scope.question.Answers.length === 0) {
                 $scope.newCourseQuestionForm.questionAnswers.$invalid = true;
                 $scope.newCourseQuestionForm.$valid = false;
             }

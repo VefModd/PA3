@@ -102,7 +102,7 @@ describe('ModalQuestionController', function(){
 
         it('should add answer if answer form was valid', function(){
             //Arrange:
-            scope.answerForm = { 
+            scope.answerForm = {
                 $valid: true,
                 $submitted : undefined
             };

@@ -1,27 +1,22 @@
-describe('filter', function(){
-    beforeEach(module('angularEvaluation'));
-
-    describe('isStatus', function(){
-        var $filter;
-
-        beforeEach(function () {
-            module('isStatus');
-            inject(function (_$filter_) {
-                $filter = _$filter_;
-            });
+describe('isStatus', function(){
+    beforeEach(function () {
+        module('angularEvaluation');
+        inject(function (_$filter_) {
+            $filter = _$filter_;
         });
-
-        it('should...', function(){
-            //Arrange:
-            var fakeEval = [], result = [];
-            for(var i = 0; i < 10; i++){
-                if(i % 2 === 1) fakeEval.status = 'bla';
-                else fakeEval.status = 'kalli';
-            }
-            //Act:
-            result = $filter('isStatus')(fakeEval, 'bla');
-            //Assert:
-            expect(result.size).toBe(5);
-        });
+    });
+    it('should filter fakeEval correctly', function(){
+        //Arrange:
+        var fakeEval = [], result = [];
+        for(var i = 0; i < 10; i++){
+            if(i % 2 === 1) fakeEval.push({Status: 'bla'});
+            else fakeEval.push({Status: 'kalli'});
+        }
+        //Act:
+        result = $filter('isStatus')(fakeEval, 'bla');
+        //Assert:
+        expect(result.length).toBe(5);
+        expect(result[3].Status).toBe('bla');
+        expect(result[2].Status).not.toBe('kalli');
     });
 });

@@ -1,31 +1,40 @@
 <div class="form-group"
     ng-show="question.Type === 'text'"
-    ng-class="{ 'has-error': answerEvaluationForm.question.ID.$invalid && answerEvaluationForm.$submitted }">
+    ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="question.ID" class="control-label">
+    <label for="getName()" class="control-label">
         {{ question.Text }} - {{ question.ID }}
     </label>
 
     <textarea cols="1"
         rows="5"
-        name="question.ID"
+        name="getName()"
         ng-model="answer.Value"
-        required
+        ng-required="requiredCheck()"
         ng-maxlength="100"
         class="form-control">
     </textarea>
 </div>
 
-<div ng-show="question.Type === 'single'">
+<div class="form-group"
+    ng-show="question.Type === 'single'"
+    ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
+    <label for="getName()" class="control-label">
+        {{ question.Text }} - {{ question.ID }}
+    </label>
     <p>
         This is a single question
     </p>
 </div>
 
-<div ng-show="question.Type === 'multiple'">
+
+<div class="form-group"
+    ng-show="question.Type === 'multiple'"
+    ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
+    <label for="getName()" class="control-label">
+        {{ question.Text }} - {{ question.ID }}
+    </label>
     <p>
         This is a multiple question
     </p>
 </div>
-
-

@@ -1,22 +1,20 @@
 describe('dispatchTeacher', function() {
     beforeEach(module('angularEvaluation'));
 
-    var factory,
-        url,
-        template = "WOW SUCH FAKE";
+    var  template = "WOW SUCH FAKE";
 
     beforeEach(inject(function(dispatchTeacher, _$httpBackend_, _$rootScope_, _SERVER_URL_) {
         service = dispatchTeacher;
         $httpBackend = _$httpBackend_;
         $rootScope = _$rootScope_
-        url = _SERVER_URL_;
+        SERVER_URL = _SERVER_URL_;
     }));
 
     describe("retrieving evaluation templates", function() {
         it("should return the data", function() {
             $rootScope.data = { Token: "FAKETOKEN"};
 
-            $httpBackend.whenGET(url + "evaluationtemplates", function(header) {
+            $httpBackend.whenGET(SERVER_URL + "evaluationtemplates", function(header) {
                 expect(header.Authorization).toBe("Basic " + $rootScope.data.Token);
                 return true;
             }).respond(template);
@@ -31,7 +29,7 @@ describe('dispatchTeacher', function() {
         it("should fail!", function() {
             $rootScope.data = { Token: "FAKETOKEN"};
 
-            $httpBackend.whenGET(url + "evaluationtemplates", function(header) {
+            $httpBackend.whenGET(SERVER_URL + "evaluationtemplates", function(header) {
                 expect(header.Authorization).not.toBe("Basic WRONGTOKEN");
                 return true;
             }).respond(500, { message: "An error has occurred." });
@@ -50,7 +48,7 @@ describe('dispatchTeacher', function() {
         it("should return the data", function() {
             $rootScope.data = { Token: "FAKETOKEN"};
 
-            $httpBackend.whenGET(url + "evaluations", function(header) {
+            $httpBackend.whenGET(SERVER_URL + "evaluations", function(header) {
                 expect(header.Authorization).toBe("Basic " + $rootScope.data.Token);
                 return true;
             }).respond(template);
@@ -65,7 +63,7 @@ describe('dispatchTeacher', function() {
         it("should fail!", function() {
             $rootScope.data = { Token: "FAKETOKEN"};
 
-            $httpBackend.whenGET(url + "evaluations", function(header) {
+            $httpBackend.whenGET(SERVER_URL + "evaluations", function(header) {
                 expect(header.Authorization).not.toBe("Basic WRONGTOKEN");
                 return true;
             }).respond(500, { message: "An error has occurred." });
@@ -91,7 +89,7 @@ describe('dispatchTeacher', function() {
                 EndDate: Date.parse(new Date())
             }
 
-            $httpBackend.when("POST", url + "evaluations", function (postdata) {
+            $httpBackend.when("POST", SERVER_URL + "evaluations", function (postdata) {
                 var data = JSON.parse(postdata);
                 expect(data.TemplateID).toBe(post.TemplateID);
                 expect(data.StartDate).toBe(post.StartDate);

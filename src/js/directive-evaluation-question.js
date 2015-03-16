@@ -1,4 +1,4 @@
-angular.module("angularEvaluation").directive("evaluationQuestion", function($sce) {
+angular.module("angularEvaluation").directive("evaluationQuestion", function() {
     return {
         restrict: 'E',
         require: '^form',
@@ -7,15 +7,10 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function($sc
         },
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
-            // (scope, element, attributes)
-            // TODO answerEvaluationForm.{{ getName() }}.$invalid'
+            scope.question.Result = {};
             scope.answerEvaluationForm = answerEvaluationForm;
-            // get a unique indentifier
-            scope.nameForValidation = scope.question.Text + scope.question.ID;
-            scope.nameForValidation = $sce.trustAsHtml(scope.nameForValidation.replace(/ /g,''));
-            scope.getName = function() {
-                return scope.nameForValidation;
-            };
+
+            /*
             scope.requiredCheck = function() {
                 if(attributes.isrequired === 'true') {
                     return true;
@@ -23,11 +18,55 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function($sc
                     return false;
                 }
             };
+            */
 
-            console.log("attributes.isrequired: ", attributes.isrequired);
-            console.log("attributes: ", attributes);
-            console.log("scope.nameForValidation: ", scope.nameForValidation);
-            console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
+            scope.id = scope.question.ID + "";
+
+            if(attributes.typeofquestion === 'teacherQuestion') {
+                scope.teacherid = attributes.teacher;
+                scope.id += attributes.teacher;
+            }
+
+            scope.question.Result[scope.id] = {
+                QuestionID : scope.question.ID,
+                TeacherSSN : attributes.teacher,
+                Value : []
+            };
+
+            console.log("ID: ", scope.id);
+
+            /*
+            if(scope.question.Type === 'multiple') {
+                scope.question.Result[scope.id].Value = [];
+            }
+            */
+
+            scope.updateValue = function(answer, id) {
+                if(answer.checked) {
+                    console.log("questoin: ", scope.question);
+                    scope.question.Result[id].Value.push(answer.Text);
+                    console.log("HEHE");
+                } else {
+                    console.log("HERE?");
+                    var index = 0;
+                    while(answer.Text !== scope.question.Result[id].Value[index]) {
+                        index++;
+                    }
+                    scope.question.Result[id].Value.splice(index, 1);
+                    console.log("HOT");
+                }
+                //console.log("inside updateValue: ", scope.question.Result[id].Value);
+
+            };
+
+            //console.log("the form: ", scope.answerEvaluationForm);
+            //console.log("attributes: ", attributes);
+            console.log("question: ", scope.question);
+            /*
+            scope.test = function() {
+                console.log("question ", scope.question);
+            };
+            */
         }
     };
 });

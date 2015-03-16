@@ -1,4 +1,4 @@
-angular.module("angularEvaluation").directive("evaluationQuestion", function($sce) {
+angular.module("angularEvaluation").directive("evaluationQuestion", function() {
     return {
         restrict: 'E',
         require: '^form',
@@ -7,15 +7,8 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function($sc
         },
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
-            // (scope, element, attributes)
-            // TODO answerEvaluationForm.{{ getName() }}.$invalid'
             scope.answerEvaluationForm = answerEvaluationForm;
-            // get a unique indentifier
-            scope.nameForValidation = scope.question.Text + scope.question.ID;
-            scope.nameForValidation = $sce.trustAsHtml(scope.nameForValidation.replace(/ /g,''));
-            scope.getName = function() {
-                return scope.nameForValidation;
-            };
+
             scope.requiredCheck = function() {
                 if(attributes.isrequired === 'true') {
                     return true;
@@ -24,10 +17,37 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function($sc
                 }
             };
 
-            console.log("attributes.isrequired: ", attributes.isrequired);
+            scope.id = scope.question.Text + scope.question.ID;
+
+            if(attributes.typeofquestion === 'teacherQuestion') {
+                scope.id += attributes.teacher;
+            }
+
+            scope.id = scope.id.replace(/ /g,'');
+            console.log("ID: ", scope.id);
+            scope.question.Answers.Value = [];
+            scope.question.Answers.Value[scope.id] = undefined;
+
+            if(scope.question.Type === 'multiple') {
+                scope.question.Answers.Value[scope.id] = [];
+            }
+
+            scope.updateValue = function(answer, id) {
+                if(answer.checked) {
+                    scope.question.Answers.Value[id].push(answer.Text);
+                } else {
+                    var index = 0;
+                    while(answer.Text !== scope.question.Answers.Value[id][index]) {
+                        index++;
+                    }
+                    scope.question.Answers.Value[id].splice(index, 1);
+                }
+                console.log("inside updateValue: ", scope.question.Answers.Value[id]);
+
+            };
+
+            console.log("the form: ", scope.answerEvaluationForm);
             console.log("attributes: ", attributes);
-            console.log("scope.nameForValidation: ", scope.nameForValidation);
-            console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
         }
     };
 });

@@ -36,6 +36,7 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
                 $modalInstance.close($scope.answer);
             } else {
                 console.log("answerEvaluation is NOT valid!");
+                $modalInstance.close($scope.answer);
             }
         };
     }]);

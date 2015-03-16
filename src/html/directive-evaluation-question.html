@@ -2,14 +2,14 @@
     ng-show="question.Type === 'text'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="getName()" class="control-label">
+    <label for="{{ id }}" class="control-label">
         {{ question.Text }} - {{ question.ID }}
     </label>
 
     <textarea cols="1"
         rows="5"
-        name="getName()"
-        ng-model="answer.Value"
+        name="{{ id }}"
+        ng-model="answer.Value[id]"
         ng-required="requiredCheck()"
         ng-maxlength="100"
         class="form-control">
@@ -19,22 +19,36 @@
 <div class="form-group"
     ng-show="question.Type === 'single'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
-    <label for="getName()" class="control-label">
+
+    <label for="{{ id }}" class="control-label">
         {{ question.Text }} - {{ question.ID }}
     </label>
-    <p>
-        This is a single question
-    </p>
-</div>
 
+    <div ng-repeat="answer in question.Answers">
+
+        <input type="radio"
+            name="{{ id }}"
+            ng-model="answer.Value[id]"
+            value="{{ answer.Text }}"
+            ng-required="requiredCheck()" /> {{ answer.Text }}
+    </div>
+</div>
 
 <div class="form-group"
     ng-show="question.Type === 'multiple'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
-    <label for="getName()" class="control-label">
+
+    <label for="{{ id }}" class="control-label">
         {{ question.Text }} - {{ question.ID }}
     </label>
-    <p>
-        This is a multiple question
-    </p>
+
+    <div ng-repeat="answer in question.Answers">
+
+        <input type="checkbox"
+            name="{{ id }}"
+            ng-model="answer.checked"
+            ng-click="updateValue(answer, id)"
+            value="{{ answer.Text }}"
+            ng-required="requiredCheck()" /> {{ answer.Text }}
+    </div>
 </div>

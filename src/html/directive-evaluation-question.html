@@ -9,10 +9,10 @@
     <textarea cols="1"
         rows="5"
         name="{{ id }}"
-        ng-model="answer.Value[id]"
-        ng-required="requiredCheck()"
+        ng-model="question.Result[id].Value"
         ng-maxlength="100"
         class="form-control">
+        <!--ng-required="requiredCheck()"-->
     </textarea>
 </div>
 
@@ -28,9 +28,9 @@
 
         <input type="radio"
             name="{{ id }}"
-            ng-model="answer.Value[id]"
-            value="{{ answer.Text }}"
-            ng-required="requiredCheck()" /> {{ answer.Text }}
+            ng-model="question.Result[id].Value"
+            value="{{ answer.Text }}" /> {{ answer.Text }}
+            <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
 
@@ -48,7 +48,12 @@
             name="{{ id }}"
             ng-model="answer.checked"
             ng-click="updateValue(answer, id)"
-            value="{{ answer.Text }}"
-            ng-required="requiredCheck()" /> {{ answer.Text }}
+            value="{{ answer.Text }}" /> {{ answer.Text }}
+            <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
+<!--
+<div>
+    <button type="button" class="btn btn-lg btn-warning" ng-click="test()">TEST</button>
+</div>
+-->

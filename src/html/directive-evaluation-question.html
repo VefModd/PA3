@@ -30,7 +30,7 @@
         <input type="radio"
             name="{{ question.$$hashKey }}"
             ng-model="question.answers"
-            ng-required="requiredCheck()"
+            ng-click="clickRadio()"
             value="{{ answer.ID }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
@@ -50,8 +50,7 @@
             name="{{ question.$$hashKey }}"
             ng-model="answer.checked"
             ng-click="updateValue(answer, question)"
-            required="false"
-            ng-required="false"
+            ng-required="requiredCheck()"
             value="{{ answer.ID }}" /> {{ answer.Text }} - {{ question.answers.length }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
             <!--ng-required="requiredCheck() && question.answers.length === 0" -->

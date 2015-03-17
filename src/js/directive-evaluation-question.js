@@ -21,21 +21,19 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
             };
             
             scope.isinValid = function() {
-                console.log("scope.question.answers: ", scope.question.answers.length);
                 if(!scope.requiredCheck()) {
-                    console.log("return false!");
+                    //console.log("return false!");
                     return false;
                 }
 
                 if(scope.question.answers === undefined || scope.question.answers.length === 0) {
-                    console.log("return true!");
+                    //console.log("return true!");
                     return true;
                 }
                 else {
-                    console.log("return false!");
+                    //console.log("return false!");
                     return false;
                 }
-
 
 
                 /*
@@ -56,6 +54,31 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 }
                 */
             };
+            
+            scope.clickRadio = function() {
+                console.log("inside click!");
+                if(scope.question.answers.length !== 0) {
+
+                    console.log("scope.answerEvaluationForm[scope.question.$$hashKey] ", scope.answerEvaluationForm[scope.question.$$hashKey]);
+                    console.log("getErrors: ", scope.answerEvaluationForm.$error.required);
+
+                    for(var i = 0; i < scope.answerEvaluationForm.$error.required.length; i++) {
+                        console.log("i: ", scope.answerEvaluationForm.$error.required[i]);
+                        if(scope.answerEvaluationForm.$error.required[i].$name === scope.question.$$hashKey) {
+                            console.log("change");
+                            scope.answerEvaluationForm.$error.required[i].$valid = true;
+                            scope.answerEvaluationForm.$error.required[i].$invalid = false;
+                            scope.answerEvaluationForm.$error.required.splice(1, i);
+                        }
+                    }
+                    scope.answerEvaluationForm[scope.question.$$hashKey].$valid = true;
+                    scope.answerEvaluationForm[scope.question.$$hashKey].$invalid = false;
+                    /*
+                    scope.answerEvaluationForm.$valid = true;
+                    scope.answerEvaluationForm.$invalid = false;
+                    */
+                }
+            };
 
             scope.updateValue = function(answer, question) {
                 if(answer.checked) {
@@ -67,6 +90,13 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                     }
                     question.answers.splice(index, 1);
                 }
+                /*
+                if(question.answers.length !== 0) {
+                    console.log("scope.answerEvaluationForm[scope.question.$$hashKey]", scope.answerEvaluationForm[scope.question.$$hashKey]);
+                    scope.answerEvaluationForm[scope.question.$$hashKey].$valid = true;
+
+                }
+                */
                 console.log("inside updateValue: ", question.answers);
             };
 

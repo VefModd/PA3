@@ -16,7 +16,7 @@ angular.module('angularEvaluation', [ 'ngRoute', 'ui.bootstrap', 'ui.bootstrap.t
             }).
             when('/new-evaluation-template', {
                 templateUrl: 'src/html/new-evaluation-template.html',
-                controller: 'NewEvaluationController'
+                controller: 'NewEvaluationTemplateController'
             }).
             otherwise({
                 redirectTo: '/login'

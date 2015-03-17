@@ -3,7 +3,6 @@ describe('FrontPageTeacherController', function(){
 
     var dispatchTeacher,
         ok,
-        $scope = {},
         controller;
 
     var mockDispatchTeacher = {
@@ -61,6 +60,7 @@ describe('FrontPageTeacherController', function(){
         $location = _$location_;
         $modal = _$modal_;
         $route = _$route_;
+        $scope = $rootScope.$new();
     }));
 
     describe('evaluationTemplates, evaluations SUCCESS', function(){

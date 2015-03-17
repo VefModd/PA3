@@ -3,13 +3,13 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         restrict: 'E',
         require: '^form',
         scope: {
-            question: '=ngModel'
+            question: '=ngModel',
         },
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
-            console.log("INSIDE DIRECTIVE! => scope.question: ", scope.question);
+            //console.log("INSIDE DIRECTIVE! => scope.question: ", scope.question);
             scope.answerEvaluationForm = answerEvaluationForm;
-            console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
+            console.log("answerEvaluationForm: ", scope.answerEvaluationForm);
             scope.question.$$hashKey = scope.question.$$hashKey.replace(/:/, '');
             
             scope.requiredCheck = function() {
@@ -20,6 +20,43 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 }
             };
             
+            scope.isinValid = function() {
+                console.log("scope.question.answers: ", scope.question.answers.length);
+                if(!scope.requiredCheck()) {
+                    console.log("return false!");
+                    return false;
+                }
+
+                if(scope.question.answers === undefined || scope.question.answers.length === 0) {
+                    console.log("return true!");
+                    return true;
+                }
+                else {
+                    console.log("return false!");
+                    return false;
+                }
+
+
+
+                /*
+                var answer = scope.answerEvaluationForm[scope.question.$$hashKey];
+                console.log("answer: ", answer);
+                if(answer) {
+                    console.log("scope.question: ", scope.question);
+                    console.log("answer.$invalid: ", answer.$invalid);
+                    if(answer.$invalid) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    return true;
+                }
+                */
+            };
+
             scope.updateValue = function(answer, question) {
                 if(answer.checked) {
                     question.answers.push(answer.ID);
@@ -46,7 +83,7 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 */
 
                 //console.log("question ", scope.question);
-                console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
+                //console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
 
             };
 

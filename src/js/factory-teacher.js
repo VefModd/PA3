@@ -10,6 +10,7 @@ angular.module("angularEvaluation").factory("dispatchTeacher",
                 };
                 return $http.get(SERVER_URL + 'evaluationtemplates', config);
             },
+
             addEvaluation:
             function(evaluation) {
                 var config = {
@@ -19,6 +20,7 @@ angular.module("angularEvaluation").factory("dispatchTeacher",
                 };
                 return $http.post(SERVER_URL + 'evaluations', evaluation, config);
             },
+
             evaluations:
             function() {
                 var config = {
@@ -27,6 +29,17 @@ angular.module("angularEvaluation").factory("dispatchTeacher",
                     }
                 };
                 return $http.get(SERVER_URL + 'evaluations', config);
-            }
+            },
+
+            getEvaluationResultsById:
+            function(id) {
+                var config = {
+                    headers: {
+                        'Authorization': 'Basic ' + $rootScope.data.Token
+                    }
+                };
+                return $http.get(SERVER_URL + 'evaluations/' + id, config);
+            },
+
         };
     });

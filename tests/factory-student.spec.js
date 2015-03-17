@@ -122,6 +122,7 @@ describe('dispatchStudent', function() {
         });
     });
 
+    /*
     describe("retrieving student evaluation results by id", function() {
 
         it("should return the data", function() {
@@ -162,4 +163,5 @@ describe('dispatchStudent', function() {
             $httpBackend.flush();
         });
     });
+    */
 });

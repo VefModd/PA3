@@ -1,7 +1,16 @@
 describe('ModalAnswerController', function(){
     beforeEach(module('angularEvaluation'));
 
-    var controller, modalInstance, evaluation = { ID: undefined }, courseName, courseID, semester, ok;
+    var controller,
+        modalInstance, 
+        evaluation = { 
+            TeacherQuestions: [], 
+            CourseQuestions: [] 
+        }, 
+        courseName, 
+        courseID,
+        semester,
+        ok;
 
     var mockDispatchModalAnswer = {
         getTeachers: function(){
@@ -35,6 +44,7 @@ describe('ModalAnswerController', function(){
         $modal = _$modal_;
         $route = _$route_;
         $scope = $rootScope.$new();
+        evaluation = evaluation;
 
     }));
 

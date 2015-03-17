@@ -73,19 +73,13 @@ describe('FrontPageTeacherController', function(){
                 dispatchTeacher: mockDispatchTeacher
             });
         });
-        it('should test that data goes through', function(){
-            // Act:
-            mockDispatchTeacher.evaluationTemplates();
-
+        it('should test that templates go through', function(){
             // Assert:
             expect($scope.evaluationTemplates).toBeDefined();
             expect($scope.evalTplsFail).not.toBeDefined();
         });
 
-        it('should test that data goes through', function(){
-            // Act:
-            mockDispatchTeacher.evaluations();
-
+        it('should test that evaluations go through', function(){
             // Assert:
             expect($scope.evaluations).toBeDefined();
             expect($scope.evalTplsFail).not.toBeDefined();
@@ -104,18 +98,12 @@ describe('FrontPageTeacherController', function(){
             });
         });
         it('should test that data goes through', function(){
-            // Act:
-            mockDispatchTeacher.evaluationTemplates();
-
             // Assert:
             expect($scope.evaluationTemplates.length).toBe(0);
             expect($scope.evalTplsFail).toBeDefined();
         });
 
         it('should test that data goes through', function(){
-            // Act:
-            mockDispatchTeacher.evaluations();
-
             // Assert:
             expect($scope.evaluations.length).toBe(0);
             expect($scope.evalTplsFail).toBeDefined();

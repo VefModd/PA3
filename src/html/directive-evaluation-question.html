@@ -1,15 +1,15 @@
 <div class="form-group"
-    ng-show="question.Type === 'text'"
+    ng-show="question.question.Type === 'text'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="{{ id }}" class="control-label">
-        {{ question.Text }} - {{ question.ID }}
+    <label for="question.ID" class="control-label">
+        {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
     <textarea cols="1"
         rows="5"
-        name="{{ id }}"
-        ng-model="question.Result[id].Value"
+        name="question.ID"
+        ng-model="question.answers"
         ng-maxlength="100"
         class="form-control">
         <!--ng-required="requiredCheck()"-->
@@ -17,43 +17,42 @@
 </div>
 
 <div class="form-group"
-    ng-show="question.Type === 'single'"
+    ng-show="question.question.Type === 'single'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="{{ id }}" class="control-label">
-        {{ question.Text }} - {{ question.ID }}
+    <label for="question.ID" class="control-label">
+        {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
-    <div ng-repeat="answer in question.Answers">
+    <div ng-repeat="answer in question.question.Answers">
 
         <input type="radio"
-            name="{{ id }}"
-            ng-model="question.Result[id].Value"
+            name="question.ID"
+            ng-model="question.answers"
             value="{{ answer.Text }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
 
 <div class="form-group"
-    ng-show="question.Type === 'multiple'"
+    ng-show="question.question.Type === 'multiple'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="{{ id }}" class="control-label">
-        {{ question.Text }} - {{ question.ID }}
+    <label for="question.ID" class="control-label">
+        {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
-    <div ng-repeat="answer in question.Answers">
+    <div ng-repeat="answer in question.question.Answers">
 
         <input type="checkbox"
-            name="{{ id }}"
+            name="question.ID"
             ng-model="answer.checked"
-            ng-click="updateValue(answer, id)"
+            ng-click="updateValue(answer, question)"
             value="{{ answer.Text }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
-<!--
+
 <div>
     <button type="button" class="btn btn-lg btn-warning" ng-click="test()">TEST</button>
 </div>
--->

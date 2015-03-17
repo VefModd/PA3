@@ -21,10 +21,10 @@ describe('ModalAnswerController', function(){
                     var fakeTeacher = {
                         data: "fakeTeacher"
                     };
-                    if(ok){ fn([fakeTeacher]); dump("Success!"); }
+                    if(ok){ fn([fakeTeacher]); }
                     return {
                         error: function(errorFn){
-                            if(!ok) { errorFn(); dump("Error!");}
+                            if(!ok) { errorFn(); }
                         }
                     }
                 }

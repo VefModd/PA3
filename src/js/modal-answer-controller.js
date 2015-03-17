@@ -53,11 +53,10 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
         $scope.finishEvaluation = function() {
             if($scope.answerEvaluationForm.$valid) {
                 console.log("answerEvaluation is valid!");
-                console.log("scope.evaluation.teacherQ: ", $scope.evaluation);
 
                 $scope.result = {
-                    CourseResult : $scope.evaluation.CourseQuestions,
-                    TeacherResult : $scope.evaluation.TeacherQuestions
+                    CourseResult : $scope.courseQuestions,
+                    TeacherResult : $scope.teachers
                 };
 
                 $modalInstance.close($scope.result);

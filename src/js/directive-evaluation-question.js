@@ -8,7 +8,7 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, answerEvaluationForm) {
             console.log("INSIDE DIRECTIVE! => scope.question: ", scope.question);
-            //scope.question.Result = [];
+            console.log("Hash key: ", scope.question.$$hashKey);
             //(scope, element, attributes, answerEvaluationForm)
             scope.answerEvaluationForm = answerEvaluationForm;
 
@@ -20,30 +20,6 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                     return false;
                 }
             };
-            */
-            /*
-            scope.id = scope.question.ID + "";
-
-            if(attributes.typeofquestion === 'teacherQuestion') {
-                scope.teacherid = attributes.teacher;
-                scope.id += attributes.teacher;
-            }
-            */
-
-            /*
-            scope.question.Result[scope.id] = {
-                QuestionID : scope.question.ID,
-                TeacherSSN : attributes.teacher,
-                Value : []
-            };
-            */
-
-            //console.log("ID: ", scope.id);
-
-            /*
-            if(scope.question.Type === 'multiple') {
-                scope.question.Result[scope.id].Value = [];
-            }
             */
 
             scope.updateValue = function(answer, question) {

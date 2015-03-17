@@ -2,13 +2,13 @@
     ng-show="question.question.Type === 'text'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="question.ID" class="control-label">
+    <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
     <textarea cols="1"
         rows="5"
-        name="question.ID"
+        name="{{ question.$$hashKey }}"
         ng-model="question.answers"
         ng-maxlength="100"
         class="form-control">
@@ -20,14 +20,14 @@
     ng-show="question.question.Type === 'single'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="question.ID" class="control-label">
+    <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
     <div ng-repeat="answer in question.question.Answers">
 
         <input type="radio"
-            name="question.ID"
+            name="{{ question.$$hashKey }}"
             ng-model="question.answers"
             value="{{ answer.Text }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
@@ -38,14 +38,14 @@
     ng-show="question.question.Type === 'multiple'"
     ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
-    <label for="question.ID" class="control-label">
+    <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
     <div ng-repeat="answer in question.question.Answers">
 
         <input type="checkbox"
-            name="question.ID"
+            name="{{ question.$$hashKey }}"
             ng-model="answer.checked"
             ng-click="updateValue(answer, question)"
             value="{{ answer.Text }}" /> {{ answer.Text }}

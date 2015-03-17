@@ -33,9 +33,9 @@
                         <legend>{{ teacher.FullName }}</legend>
 
                         <div class="form-group"
-                            ng-repeat="teacherQuestion in evaluation.TeacherQuestions">
+                            ng-repeat="teacherQuestion in teacher.teacherQuestions">
 
-                            <evaluation-question ng-model="teacherQuestion" isrequired="false" typeofquestion="teacherQuestion" teacher="{{ teacher.SSN }}">
+                            <evaluation-question ng-model="teacherQuestion" isrequired="false" typeofquestion="teacherQuestion">
                             </evaluation-question>
 
                         </div>

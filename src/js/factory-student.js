@@ -42,13 +42,13 @@ angular.module("angularEvaluation").factory("dispatchStudent",
             },
 
             saveAnswer:
-            function(course, semester, evalID, questionID, teacherSSN, value) {
+            function(course, semester, evalID, answer) {
                 var config = {
                     headers: {
                         'Authorization': 'Basic ' + $rootScope.data.Token
                     }
                 };
-                return $http.post(SERVER_URL + 'courses/' + course + '/' + semester + '/evaluations/' + evalID, questionID, teacherSSN, value, config);
+                return $http.post(SERVER_URL + 'courses/' + course + '/' + semester + '/evaluations/' + evalID, answer, config);
             }
         };
     });

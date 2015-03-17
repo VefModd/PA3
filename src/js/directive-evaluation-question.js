@@ -7,7 +7,7 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         },
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
-            scope.question.Result = {};
+            scope.question.Result = [];
             scope.answerEvaluationForm = answerEvaluationForm;
 
             /*

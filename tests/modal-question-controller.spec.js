@@ -78,10 +78,5 @@ describe('ModalQuestionController', function(){
             expect(scope.newCourseQuestionForm.$valid).toBeTruthy();
             expect(modalInstance.close).toHaveBeenCalled();
         });
-
-    
-    
-    
-    
     });
 });

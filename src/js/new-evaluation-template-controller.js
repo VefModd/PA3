@@ -1,4 +1,4 @@
-angular.module('angularEvaluation').controller('NewEvaluationController', ['$scope', '$modal', '$location', 'dispatchNewEvaluation',
+angular.module('angularEvaluation').controller('NewEvaluationTemplateController', ['$scope', '$modal', '$location', 'dispatchNewEvaluation',
     function($scope, $modal, $location, dispatchNewEvaluation) {
         $scope.evaluationTemplate = {
             //"ID": 0,
@@ -77,7 +77,7 @@ angular.module('angularEvaluation').controller('NewEvaluationController', ['$sco
                 error(function() {
                     console.log("ERROR");
                     // TODO ERROR MESSAGE
-                    //$scope.newEvaluationTemplateFail = true;
+                    $scope.newEvaluationTemplateFail = true;
                 });
             }
         };

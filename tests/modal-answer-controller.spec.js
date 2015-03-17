@@ -2,12 +2,14 @@ describe('ModalAnswerController', function(){
     beforeEach(module('angularEvaluation'));
 
     var controller,
-        modalInstance, 
-        evaluation = { 
-            TeacherQuestions: [], 
-            CourseQuestions: [] 
-        }, 
-        courseName, 
+        modalInstance,
+        evaluation = {
+            TeacherQuestions: [
+                {data : 'fakeTQdata'}],
+            CourseQuestions: [
+                {data: 'fakeCQdata'}]
+        },
+        courseName,
         courseID,
         semester,
         ok;

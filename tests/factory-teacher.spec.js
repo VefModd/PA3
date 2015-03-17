@@ -66,7 +66,7 @@ describe('dispatchTeacher', function() {
             }).respond(500, { message: "An error has occurred." });
 
             service.evaluations().then(function(d) {
-                dump("Heyhey", d);
+                // Nothing
             }, function(e) {
                 expect(e.status).toBe(500);
             });

@@ -40,11 +40,27 @@ describe('FrontPageTeacherController', function(){
             return {
                 success: function(fn) {
                     if(eval.TemplateID === 1337){
-                        fn()
+                        fn();
                     }
                     return {
                         error: function(errorFn) {
                             if(eval.TemplateID !== 1337){
+                                errorFn();
+                            }
+                        }
+                    };
+                }
+            };
+        },
+        getEvaluationResultsById: function(evalId) {
+            return {
+                success: function(fn) {
+                    if(evalId === 1337){
+                        fn([{ data: "FAKEDATA" }]);
+                    }
+                    return {
+                        error: function(errorFn) {
+                            if(evalId !== 1337){
                                 errorFn();
                             }
                         }
@@ -171,6 +187,32 @@ describe('FrontPageTeacherController', function(){
             expect($scope.evaluation.TemplateID).not.toBe(1337);
             expect($modal.open).toHaveBeenCalled();
             expect($route.reload).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('retrieving evaluation results by evalID', function() {
+        beforeEach(function() {
+            controller = $controller('FrontPageTeacherController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchTeacher: mockDispatchTeacher
+            });
+
+        });
+
+        it('should succeed in retrieving the results', function() {
+            // Act:
+            $scope.getResultsById(1337);
+            // Assert:
+            dump("NOT ASSERTING!: f-p-t-c.getResults" );
+        });
+
+        it('should fail in retrieving the results', function() {
+            // Act:
+            $scope.getResultsById(80085);
+
+            // Assert:
+            dump("NOT ASSERTING!: f-p-t-c.getResults");
         });
     });
 

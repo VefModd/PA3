@@ -46,7 +46,53 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                         });
 
                         modalInstance.result.then(function(data) {
-                            console.log("MODAL answer ===> ", data);
+                            $scope.result = data;
+                            console.log("MODAL answer ===> ", $scope.result);
+                            console.log("CourseResult:");
+                            for(var i = 0; i < $scope.result.CourseResult.length; i++) {
+                                if($scope.result.CourseResult[i].question.Type === 'multiple') {
+                                    console.log("multiple");
+                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
+                                    console.log("TeacherSSN: ", undefined);
+                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
+                                }
+                                else if($scope.result.CourseResult[i].question.Type === 'single'){
+                                    console.log("single");
+                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
+                                    console.log("TeacherSSN: ", undefined);
+                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
+                                }
+                                else {
+                                    console.log("text");
+                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
+                                    console.log("TeacherSSN: ", undefined);
+                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
+                                }
+                            }
+
+                            console.log("TeacherResult:");
+                            for(var j = 0; j < $scope.result.TeacherResult.length; j++) {
+                                for(var k = 0; k < $scope.result.TeacherResult[j].teacherQuestions.length; k++) {
+                                    if($scope.result.TeacherResult[j].teacherQuestions[k].question.Type === 'multiple') {
+                                        console.log("multiple");
+                                        console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
+                                        console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
+                                        console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
+                                    }
+                                    else if($scope.result.TeacherResult[j].teacherQuestions[k].question.Type === 'single') {
+                                        console.log("single");
+                                        console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
+                                        console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
+                                        console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
+                                    }
+                                    else {
+                                        console.log("text");
+                                        console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
+                                        console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
+                                        console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
+                                    }
+                                }
+                            }
                         });
 
                     }).

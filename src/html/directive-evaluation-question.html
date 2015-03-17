@@ -11,6 +11,7 @@
         name="{{ question.$$hashKey }}"
         ng-model="question.answers"
         ng-maxlength="100"
+        ng-required="requiredCheck()"
         class="form-control">
         <!--ng-required="requiredCheck()"-->
     </textarea>
@@ -29,7 +30,8 @@
         <input type="radio"
             name="{{ question.$$hashKey }}"
             ng-model="question.answers"
-            value="{{ answer.Text }}" /> {{ answer.Text }}
+            ng-required="requiredCheck()"
+            value="{{ answer.ID }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
@@ -48,8 +50,9 @@
             name="{{ question.$$hashKey }}"
             ng-model="answer.checked"
             ng-click="updateValue(answer, question)"
-            value="{{ answer.Text }}" /> {{ answer.Text }}
+            value="{{ answer.ID }}" /> {{ answer.Text }} - {{ question.answers.length }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
+            <!--ng-required="requiredCheck() && question.answers.length === 0" -->
     </div>
 </div>
 

@@ -51,6 +51,7 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
         };
 
         $scope.finishEvaluation = function() {
+            console.log("inside finishEvaluation: ", $scope.answerEvaluationForm);
             if($scope.answerEvaluationForm.$valid) {
                 console.log("answerEvaluation is valid!");
 

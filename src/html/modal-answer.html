@@ -16,7 +16,7 @@
                     <div class="form-group"
                         ng-repeat="courseQuestion in courseQuestions">
 
-                        <evaluation-question ng-model="courseQuestion" isrequired="true" typeofquestion="courseQuestion">
+                        <evaluation-question ng-model="courseQuestion" isrequired="true">
                         </evaluation-question>
 
                     </div>
@@ -35,7 +35,7 @@
                         <div class="form-group"
                             ng-repeat="teacherQuestion in teacher.teacherQuestions">
 
-                            <evaluation-question ng-model="teacherQuestion" isrequired="false" typeofquestion="teacherQuestion">
+                            <evaluation-question ng-model="teacherQuestion" isrequired="false">
                             </evaluation-question>
 
                         </div>

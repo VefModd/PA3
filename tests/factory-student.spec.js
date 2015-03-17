@@ -121,47 +121,4 @@ describe('dispatchStudent', function() {
             $httpBackend.flush();
         });
     });
-
-    /*
-    describe("retrieving student evaluation results by id", function() {
-
-        it("should return the data", function() {
-
-        // Constructing url regex to accept correct url formats
-        var regex = new RegExp(url + "evaluations\/[0-9]+", "");
-
-            $httpBackend.whenGET(regex, function(header) {
-                expect(header.Authorization).toBe("Basic " + $rootScope.data.Token);
-                return true;
-            }).respond(template);
-
-            service.getEvaluationResultsById(1337).then(function(d) {
-                // Success...
-                expect(d.data).toBe(template);
-            });
-
-            $httpBackend.flush();
-        });
-
-        it("should fail to retrieve the data", function() {
-
-        // Constructing url regex to accept correct url formats
-        var regex = new RegExp(url + "evaluations\/[0-9]+", "");
-
-            $httpBackend.whenGET(regex, function(header) {
-                expect(header.Authorization).not.toBe("Basic WRONGTOKEN");
-                return true;
-            }).respond(500, { message: "An error has occurred." });
-
-            service.getEvaluationResultsById(1337).then(function(d) {
-                // Success...
-            }, function(e) {
-                // Error...
-                expect(e.status).toBe(500);
-            });
-
-            $httpBackend.flush();
-        });
-    });
-    */
 });

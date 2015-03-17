@@ -117,5 +117,22 @@ describe('ModalQuestionController', function(){
             expect(scope.answerForm.$submitted).not.toBeTruthy();
             expect(scope.newCourseQuestionForm.questionAnswers.$invalid).not.toBeTruthy();
         });
+
+        it('should not add answer if answer form was invalid', function(){
+            //Arrange:
+            scope.answerForm = {
+                $valid: false,
+                $submitted : undefined
+            };
+            scope.newCourseQuestionForm = {
+                questionAnswers: { $invalid: undefined },
+            };
+            //Act:
+            scope.addAnswer();
+            //Assert:
+            expect(scope.answer).toBeUndefined();
+            expect(scope.answerForm.$submitted).toBeUndefined();
+            expect(scope.newCourseQuestionForm.questionAnswers.$invalid).toBeUndefined();
+        });
     });
 });

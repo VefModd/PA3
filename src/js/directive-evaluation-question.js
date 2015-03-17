@@ -54,7 +54,31 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 }
                 */
             };
+
+            /*
+            scope.contains = function() {
+                console.log("inside contains!");
+                var returnObj = {
+                    contains : false,
+                    index : undefined
+                };
+
+                var ans = scope.answerEvaluationForm.$error.required;
+
+                for(var i = 0; i < ans.length; i++) {
+                    if(ans[i].$name === scope.question.$$hashKey) {
+                        console.log("TRUE");
+                        returnObj.contains = true;
+                        returnObj.index = i;
+                        return returnObj;
+                    }
+                }
+                console.log("FALSE");
+                return returnObj;
+            };
+            */
             
+            /*
             scope.clickRadio = function() {
                 console.log("inside click!");
                 if(scope.question.answers.length !== 0) {
@@ -62,23 +86,23 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                     console.log("scope.answerEvaluationForm[scope.question.$$hashKey] ", scope.answerEvaluationForm[scope.question.$$hashKey]);
                     console.log("getErrors: ", scope.answerEvaluationForm.$error.required);
 
-                    for(var i = 0; i < scope.answerEvaluationForm.$error.required.length; i++) {
-                        console.log("i: ", scope.answerEvaluationForm.$error.required[i]);
-                        if(scope.answerEvaluationForm.$error.required[i].$name === scope.question.$$hashKey) {
-                            console.log("change");
-                            scope.answerEvaluationForm.$error.required[i].$valid = true;
-                            scope.answerEvaluationForm.$error.required[i].$invalid = false;
-                            scope.answerEvaluationForm.$error.required.splice(1, i);
-                        }
+                    var contains = scope.contains();
+                    console.log("contains: ", contains);
+                    while(contains.contains) {
+                        console.log("contains: ", contains);
+                        scope.answerEvaluationForm.$error.required[contains.index].$valid = true;
+                        scope.answerEvaluationForm.$error.required[contains.index].$invalid = false;
+                        scope.answerEvaluationForm.$error.required.splice(1, contains.index);
+                        contains = scope.contains();
+                        console.log("after splice: contains: ", contains);
+                        console.log(scope.answerEvaluationForm.$error.required);
                     }
+
                     scope.answerEvaluationForm[scope.question.$$hashKey].$valid = true;
                     scope.answerEvaluationForm[scope.question.$$hashKey].$invalid = false;
-                    /*
-                    scope.answerEvaluationForm.$valid = true;
-                    scope.answerEvaluationForm.$invalid = false;
-                    */
                 }
             };
+            */
 
             scope.updateValue = function(answer, question) {
                 if(answer.checked) {
@@ -90,30 +114,10 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                     }
                     question.answers.splice(index, 1);
                 }
-                /*
-                if(question.answers.length !== 0) {
-                    console.log("scope.answerEvaluationForm[scope.question.$$hashKey]", scope.answerEvaluationForm[scope.question.$$hashKey]);
-                    scope.answerEvaluationForm[scope.question.$$hashKey].$valid = true;
-
-                }
-                */
                 console.log("inside updateValue: ", question.answers);
             };
 
             scope.test = function() {
-                /*
-                scope.validation = scope.question.$$hashKey;
-                console.log("scope.validation: ", scope.validation);
-
-                if(scope.question.answers !== undefined && scope.question.answers.length !== 0) {
-                    console.log("YES");
-                    console.log("scope.answerEvaluation.$setValidity: ", scope.answerEvaluationForm.$setValidity);
-                    scope.answerEvaluationForm.$setValidity(scope.validation, true, scope.answerEvaluationFrom);
-                }
-                */
-
-                //console.log("question ", scope.question);
-                //console.log("answerEvaluationFrom: ", scope.answerEvaluationForm);
 
             };
 

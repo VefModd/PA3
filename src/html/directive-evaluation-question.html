@@ -30,7 +30,8 @@
         <input type="radio"
             name="{{ question.$$hashKey }}"
             ng-model="question.answers"
-            ng-click="clickRadio()"
+            ng-required="requiredCheck()"
+            ng-click
             value="{{ answer.ID }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>

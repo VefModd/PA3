@@ -58,4 +58,17 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
 
         };
 
+        $scope.getResultsById = function(evaluationID) {
+            console.log("evaluationID: ", evaluationID);
+
+            dispatchTeacher.getEvaluationResultsById(evaluationID).
+                success(function(data) {
+                    console.log("SUCCESS! - data:", data);
+                }).
+                error(function() {
+                    console.log("ERROR!");
+                });
+        };
+
+
     }]);

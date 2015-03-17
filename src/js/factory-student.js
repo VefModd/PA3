@@ -31,16 +31,6 @@ angular.module("angularEvaluation").factory("dispatchStudent",
                 return $http.get(SERVER_URL + 'courses/' + course + '/' + semester + '/evaluations/' + evalID, config);
             },
 
-            getEvaluationResultsById:
-            function(id) {
-                var config = {
-                    headers: {
-                        'Authorization': 'Basic ' + $rootScope.data.Token
-                    }
-                };
-                return $http.get(SERVER_URL + 'evaluations/' + id, config);
-            },
-
             saveAnswer:
             function(course, semester, evalID, answer) {
                 var config = {

@@ -100,16 +100,4 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                         console.log("ERROR!");
                     });
             };
-
-            $scope.getResultsById = function(evaluationID) {
-                console.log("evaluationID: ", evaluationID);
-
-                dispatchStudent.getEvaluationResultsById(evaluationID).
-                    success(function(data) {
-                        console.log("SUCCESS! - data:", data);
-                    }).
-                    error(function() {
-                        console.log("ERROR!");
-                    });
-            };
         }]);

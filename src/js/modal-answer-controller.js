@@ -59,6 +59,7 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
                     TeacherResult : $scope.teachers
                 };
 
+                console.log("Result inside modal answer controller: ", $scope.result);
                 $modalInstance.close($scope.result);
             } else {
                 console.log("answerEvaluation is NOT valid!");

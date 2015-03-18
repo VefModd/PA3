@@ -6,14 +6,8 @@ angular.module("angularEvaluation").directive("highchart", function() {
         },
         templateUrl: 'src/html/directive-highchart.html',
         link: function(scope, element) {
-            console.log("inside link function");
-            console.log("question: ", scope.question);
-
             var chart = element.find('div');
 
-            console.log("scope.chart: ", chart);
-            chart.css('color', 'red');
-            
             scope.data = [];
 
             var options = scope.question.OptionsResults;
@@ -23,8 +17,6 @@ angular.module("angularEvaluation").directive("highchart", function() {
                     scope.data[[i]].push(options[i].AnswerText, options[i].Count);
                 }
             }
-
-            console.log("data: ", scope.data);
 
             chart.highcharts({
                 chart: {
@@ -61,25 +53,13 @@ angular.module("angularEvaluation").directive("highchart", function() {
                 series: [{
                     name: 'Population',
                     data: scope.data,
-                    /*
-                    data: [
-                        ['Shanghai', 23.7],
-                        ['Lagos', 16.1],
-                        ['Instanbul', 14.2],
-                        ['Karachi', 14.0],
-                        ['Mumbai', 12.5],
-                        ['Moscow', 12.1],
-                        ['SÃ£o Paulo', 11.8],
-                        ['Beijing', 11.7],
-                    ],
-                    */
                     dataLabels: {
                         enabled: true,
                         rotation: -90,
-                        color: '#FFFFFF',
+                        color: '#000000',
                         align: 'right',
                         format: '{point.y:.1f}', // one decimal
-                        y: 10, // 10 pixels down from the top
+                        y: -30,
                         style: {
                             fontSize: '13px',
                                 fontFamily: 'Verdana, sans-serif'
@@ -87,8 +67,6 @@ angular.module("angularEvaluation").directive("highchart", function() {
                         }
                 }]
             });
-
-
         }
     };
 });

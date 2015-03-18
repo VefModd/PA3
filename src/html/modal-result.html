@@ -32,9 +32,10 @@
                                 {{ question.Text }} - {{ question.Type }} :
                             </legend>
 
+                            <!-- SKOda TETTAE!! -->
                             <div ng-show="question.Type === 'text'">
 
-                                <div ng-repeat="textResult in question.TextResults">
+                                <div ng-repeat="textResult in question.TextResults track by $index">
                                     <p ng-show="textResult !== ''">
                                     <b>Answer: </b> {{ textResult }}
                                     </p>

@@ -57,7 +57,7 @@ angular.module("angularEvaluation").directive("highchart", function() {
                         enabled: true,
                         rotation: -90,
                         color: '#000000',
-                        align: 'right',
+                        ',
                         format: '{point.y:.1f}', // one decimal
                         y: -30,
                         style: {

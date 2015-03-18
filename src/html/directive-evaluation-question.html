@@ -3,7 +3,7 @@
     ng-class="{ 'has-error': isinValid()  && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
-        {{ question.question.Text }} - {{ question.question.ID }}
+        {{ question.question.Text }}
     </label>
 
     <textarea cols="1"
@@ -21,7 +21,7 @@
     ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
-        {{ question.question.Text }} - {{ question.question.ID }}
+        {{ question.question.Text }}
     </label>
 
     <div ng-repeat="answer in question.question.Answers">
@@ -45,7 +45,7 @@
     ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
-        {{ question.question.Text }} - {{ question.question.ID }}
+        {{ question.question.Text }}
     </label>
 
     <div ng-repeat="answer in question.question.Answers">

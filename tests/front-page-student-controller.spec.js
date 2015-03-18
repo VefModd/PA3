@@ -63,7 +63,6 @@ describe('FrontPageStudentController', function(){
         $scope = $rootScope.$new();
     }));
 
-
     describe('myCourses, myEvaluations SUCCESS', function(){
         var $scope, controller;
         beforeEach(function(){
@@ -92,6 +91,7 @@ describe('FrontPageStudentController', function(){
             expect($scope.evalListFail).not.toBeDefined();
         });
     });
+
     describe('myCourses, myEvaluations ERROR', function(){
         var $scope, controller;
         beforeEach(function(){
@@ -120,7 +120,6 @@ describe('FrontPageStudentController', function(){
             expect($scope.evalListFail).toBeDefined();
         });
     });
-
 
     describe('answer', function() {
         var fakeModal = {
@@ -157,16 +156,6 @@ describe('FrontPageStudentController', function(){
             expect($scope.answer.courseID).toBe(1337);
             expect($modal.open).toHaveBeenCalled();
             //expect($route.reload).toHaveBeenCalled();
-        });
-
-        it('should fail in adding the template', function() {
-            // Act:
-            $scope.answer('blabla', 812, '12342', 4321);
-
-            // Assert:
-            expect($scope.evaluation.TemplateID).not.toBe(1337);
-            expect($modal.open).toHaveBeenCalled();
-            expect($route.reload).not.toHaveBeenCalled();
         });
     });
 });

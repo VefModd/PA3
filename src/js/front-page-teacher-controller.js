@@ -59,10 +59,11 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
         };
 
         $scope.getResultsById = function(evaluationID) {
-            console.log("evaluationID: ", evaluationID);
+            console.log("Inside getResultByID. evaluationID: ", evaluationID);
 
             dispatchTeacher.getEvaluationResultsById(evaluationID).
                 success(function(data) {
+                    $scope.results = data;
                     console.log("SUCCESS! - data:", data);
                 }).
                 error(function() {

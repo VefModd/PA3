@@ -45,7 +45,14 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'open'">
-                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                                <button type="button"
+                                    class="btn btn-xs btn-primary pull-right"
+                                    ng-click="getResultsById(evaluation.ID)">
+                                    See results!
+                                </button>
+                                <p>
+                                    {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -60,7 +67,14 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'closed'">
-                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                                <button type="button"
+                                    class="btn btn-xs btn-primary pull-right"
+                                    ng-click="getResultsById(evaluation.ID)">
+                                    See results!
+                                </button>
+                                <p>
+                                    {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                                </p>
                             </li>
                         </ul>
                     </div>

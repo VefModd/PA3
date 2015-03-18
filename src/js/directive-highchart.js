@@ -14,12 +14,13 @@ angular.module("angularEvaluation").directive("highchart", function() {
             console.log("scope.chart: ", chart);
             chart.css('color', 'red');
             
-            scope.data = [[]];
+            scope.data = [];
 
             var options = scope.question.OptionsResults;
             if(options) {
                 for(var i = 0; i < options.length; i++) {
-                    scope.data[0].push({ text : options[i].AnswerText, count : options[i].Count });
+                    scope.data[[i]] = [];
+                    scope.data[[i]].push(options[i].AnswerText, options[i].Count);
                 }
             }
 
@@ -48,7 +49,7 @@ angular.module("angularEvaluation").directive("highchart", function() {
                 yAxis: {
                 min: 0,
                     title: {
-                        text: 'Number of students'
+                        text: 'Number of student'
                     }
                 },
                 legend: {
@@ -59,8 +60,7 @@ angular.module("angularEvaluation").directive("highchart", function() {
                 },
                 series: [{
                     name: 'Population',
-                    data: [
-                    ],
+                    data: scope.data,
                     /*
                     data: [
                         ['Shanghai', 23.7],

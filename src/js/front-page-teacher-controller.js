@@ -59,11 +59,23 @@ angular.module('angularEvaluation').controller('FrontPageTeacherController', ['$
         };
 
         $scope.getResultsById = function(evaluationID) {
-            console.log("evaluationID: ", evaluationID);
+            console.log("Inside getResultByID. evaluationID: ", evaluationID);
 
             dispatchTeacher.getEvaluationResultsById(evaluationID).
                 success(function(data) {
                     console.log("SUCCESS! - data:", data);
+
+                    $modal.open({
+                        templateUrl: 'src/html/modal-result.html',
+                        controller: 'ModalResultController',
+                        size: 'lg',
+                        resolve: {
+                            results : function() {
+                                return data;
+                            }
+                        }
+                    });
+
                 }).
                 error(function() {
                     console.log("ERROR!");

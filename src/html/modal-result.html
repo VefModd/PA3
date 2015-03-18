@@ -1,0 +1,75 @@
+<div>
+
+    <div class="modal-header">
+
+        <h2>
+            {{ results.TemplateTitle }} - results:
+        </h2>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div ng-show="courses.length === 0">
+            <p>
+                There are still no results!
+            </p>
+        </div>
+        
+        <div ng-show="courses.length !== 0">
+            <div ng-repeat="course in courses">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        {{ course.CourseName }} - {{ course.CourseID }}
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div ng-repeat="question in course.Questions">
+
+                            <legend>
+                                {{ question.Text }} - {{ question.Type }} :
+                            </legend>
+
+                            <!-- SKOda TETTAE!! -->
+                            <div ng-show="question.Type === 'text'">
+
+                                <div ng-repeat="textResult in question.TextResults track by $index">
+                                    <p ng-show="textResult !== ''">
+                                    <b>Answer: </b> {{ textResult }}
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div ng-show="question.Type === 'single'">
+
+                                <highchart ng-model="question">
+                                </highchart>
+
+                            </div>
+
+                            <div ng-show="question.Type === 'multiple'">
+
+                                <highchart ng-model="question">
+                                </highchart>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+        <button class="btn btn-danger btn-lg" ng-click="cancel()">Cancel</button>
+
+    </div>
+
+</div>

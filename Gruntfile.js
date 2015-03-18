@@ -59,7 +59,6 @@ module.exports = function(grunt) {
         eqnull: true,
         globals: {
           angular: true,
-          console: true,
           require: true
         }
       },

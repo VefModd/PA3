@@ -1,12 +1,5 @@
 angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope', '$modalInstance', 'evaluation', 'courseName', 'courseID', 'semester', 'dispatchModalAnswer',
     function ($scope, $modalInstance, evaluation, courseName, courseID, semester, dispatchModalAnswer) {
-        /*
-        console.log("ModalAnswerController: evaluation=> ", evaluation);
-        console.log("ModalAnswerController: courseName=> ", courseName);
-        console.log("ModalAnswerController: courseID=> ", courseID);
-        console.log("ModalAnswerController: semester=> ", semester);
-        console.log("ModalAnswerController: evaluation.ID=> ", evaluation.ID);
-        */
         $scope.evaluation = evaluation;
         $scope.courseName = courseName;
         $scope.courseID = courseID;
@@ -14,7 +7,6 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
 
         dispatchModalAnswer.getTeachers($scope.courseID, $scope.semester).
             success(function(data) {
-                console.log("SUCCESS - getTeachers - data: ", data);
                 $scope.teachers = data;
 
                 for(var k = 0; k < $scope.teachers.length; k++) {
@@ -27,10 +19,8 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
                         };
                     }
                 }
-                console.log("teachers: ", $scope.teachers);
             }).
             error(function() {
-                console.log("ERROR - getTeachers");
             });
 
         $scope.courseQuestions = [];
@@ -41,29 +31,22 @@ angular.module('angularEvaluation').controller('ModalAnswerController', ['$scope
                 answers: []
             };
         }
-        console.log("$scope.evaluation.CourseQuestions: ", $scope.evaluation.CourseQuestions);
-        console.log("$scope.evaluation.TeacherQuestions: ", $scope.evaluation.TeacherQuestions);
-        console.log("$scope.courseQuestions: ", $scope.courseQuestions);
-
 
         $scope.cancel = function() {
             $modalInstance.dismiss('cancel');
         };
 
         $scope.finishEvaluation = function() {
-            console.log("inside finishEvaluation: ", $scope.answerEvaluationForm);
             if($scope.answerEvaluationForm.$valid) {
-                console.log("answerEvaluation is valid!");
 
                 $scope.result = {
                     CourseResult : $scope.courseQuestions,
                     TeacherResult : $scope.teachers
                 };
 
-                console.log("Result inside modal answer controller: ", $scope.result);
                 $modalInstance.close($scope.result);
             } else {
-                console.log("answerEvaluation is NOT valid!");
+                // ERROR
             }
         };
     }]);

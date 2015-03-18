@@ -1,8 +1,7 @@
 describe('FrontPageStudentController', function(){
     beforeEach(module('angularEvaluation'));
 
-    var $controller,
-        dispatchStudent,
+    var dispatchStudent,
         ok,
         modalInstance;
 
@@ -37,17 +36,29 @@ describe('FrontPageStudentController', function(){
                 }
             };
         },
-        getEvaluation: function(courseName, courseID, semester, evaluationId){
+        getEvaluation: function(courseID, semester, evaluationId){
             return{
                 success: function(fn){
                     if(courseID === 1337){
-                        fn();
+                        fn({ID: 10, TemplateID: 13, Title: "FAKEDATA"});
                     }
                     return {
                         error: function(errorFn){
                             if(courseID !== 1337){
                                 errorFn();
                             }
+                        }
+                    };
+                }
+            };
+        },
+        saveAnswer: function (courseID, semester, evaluationID, answer) {
+            return {
+                success: function (fn) {
+                    if(evaluationID === 1337) {fn();}
+                    return {
+                        error: function (errorFn) {
+                            if(evaluationID !== 1337) {errorFn();}
                         }
                     };
                 }
@@ -66,7 +77,6 @@ describe('FrontPageStudentController', function(){
     describe('myCourses, myEvaluations SUCCESS', function(){
         var $scope, controller;
         beforeEach(function(){
-            //constructing a fake environment
             $scope = {};
             //when true, success function is called
             ok = true;
@@ -121,16 +131,25 @@ describe('FrontPageStudentController', function(){
         });
     });
 
-    describe('answer', function() {
+    describe('answer multiple with empty data', function() {
         var fakeModal = {
             result: {
                 then: function(confirmCallback) {
                     var fakeAnswer = {
-                        courseName: 'CompSci',
-                        courseID: 1337,
-                        semester: '20141',
-                        evaluationID: 1234
-                    };
+                        CourseResult: [{
+                            question: {
+                                Type : "multiple",
+                                ID: 35},
+                            answers: []
+                        }],
+                        TeacherResult: [{
+                            teacherQuestions : [{
+                                question: {
+                                    Type : "multiple",
+                                    ID: 35},
+                                answers: []
+                            }]
+                        }]};
                     confirmCallback(fakeAnswer);
                 }
             },
@@ -138,7 +157,6 @@ describe('FrontPageStudentController', function(){
 
         beforeEach(function() {
             spyOn($modal, 'open').and.returnValue(fakeModal);
-            spyOn($route, 'reload');
 
             controller = $controller('FrontPageStudentController', {
                 $scope: $scope,
@@ -150,12 +168,160 @@ describe('FrontPageStudentController', function(){
 
         it('should succeed in adding the answer', function() {
             // Act:
-            $scope.answer('CompSci', 1337, '20141', 1234);
+            $scope.answer('T-101-WEPO', 1337, '20141', 1337);
 
             // Assert:
-            //expect($scope.answer.courseID).toBe(1337);
-            //expect($modal.open).toHaveBeenCalled();
-            //expect($route.reload).toHaveBeenCalled();
+            expect($scope.answers[0].QuestionID).toBe(35);
+            expect($modal.open).toHaveBeenCalled();
+        });
+    });
+
+    describe('answer single/text with empty  data', function() {
+        var fakeModal = {
+            result: {
+                then: function(confirmCallback) {
+                    var fakeAnswer = {
+                        CourseResult: [{
+                            question: {
+                                Type : "single",
+                                ID: 35},
+                        answers: []
+                        }],
+                        TeacherResult: [{
+                            teacherQuestions : [{
+                                question: {
+                                    Type : "text",
+                                    ID: 35},
+                                answers: []
+                            }]
+                        }]};
+                    confirmCallback(fakeAnswer);
+                }
+            },
+        };
+
+        beforeEach(function() {
+            spyOn($modal, 'open').and.returnValue(fakeModal);
+
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchStudent: mockDispatchStudent
+            });
+
+        });
+
+        it('should succeed in adding the answer', function() {
+            // Act:
+            $scope.answer('T-101-WEPO', 1337, '20141', 13);
+
+            // Assert:
+            expect($modal.open).toHaveBeenCalled();
+        });
+
+        it('should succeed in adding the answer', function() {
+            // Act:
+            $scope.answer('T-101-WEPO', 13, '20141', 13);
+
+            // Assert:
+            expect($modal.open).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('answer single/text with data', function() {
+        var fakeModal = {
+            result: {
+                then: function(confirmCallback) {
+                    var fakeAnswer = {
+                        CourseResult: [{
+                            question: {
+                                Type : "single",
+                                ID: 35},
+                        answers: [{data: "FAKEANSWER"}]
+                        }],
+                        TeacherResult: [{
+                            teacherQuestions : [{
+                                question: {
+                                    Type : "text",
+                                    ID: 35},
+                                answers: [{data: "FAKEANSWER"}]
+                            }]
+                        }]};
+                    confirmCallback(fakeAnswer);
+                }
+            },
+        };
+
+        beforeEach(function() {
+            spyOn($modal, 'open').and.returnValue(fakeModal);
+
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchStudent: mockDispatchStudent
+            });
+
+        });
+
+        it('should succeed in adding the answer', function() {
+            // Act:
+            $scope.answer('T-101-WEPO', 1337, '20141', 13);
+
+            // Assert:
+            expect($modal.open).toHaveBeenCalled();
+        });
+    });
+
+    describe('answer multiple with data', function() {
+        var fakeModal = {
+            result: {
+                then: function(confirmCallback) {
+                    var fakeAnswer = {
+                        CourseResult: [{
+                            question: {
+                                Type : "multiple",
+                                ID: 35},
+                            answers: [{data: "FAKEANSWER"}]
+                        }],
+                        TeacherResult: [{
+                            teacherQuestions : [{
+                                question: {
+                                    Type : "multiple",
+                                    ID: 35},
+                                answers: [{data: "FAKEANSWER"}]
+                            }]
+                        }]};
+                    confirmCallback(fakeAnswer);
+                }
+            },
+        };
+
+        beforeEach(function() {
+            spyOn($modal, 'open').and.returnValue(fakeModal);
+
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchStudent: mockDispatchStudent
+            });
+
+        });
+
+        it('should succeed in adding the answer', function() {
+            // Act:
+            $scope.answer('T-101-WEPO', 1337, '20141', 1337);
+
+            // Assert:
+            expect($scope.answers[0].QuestionID).toBe(35);
+            expect($modal.open).toHaveBeenCalled();
+            expect($modal.open.calls.mostRecent().args[0].resolve.evaluation().ID)
+            .toBe(10);
+            expect($modal.open.calls.mostRecent().args[0].resolve.courseName())
+            .toBe('T-101-WEPO');
+            expect($modal.open.calls.mostRecent().args[0].resolve.courseID())
+            .toBe(1337);
+            expect($modal.open.calls.mostRecent().args[0].resolve.semester())
+            .toBe('20141');
         });
     });
 });

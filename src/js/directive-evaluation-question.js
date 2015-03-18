@@ -10,7 +10,7 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
             scope.answerEvaluationForm = answerEvaluationForm;
             console.log("answerEvaluationForm: ", scope.answerEvaluationForm);
             scope.question.$$hashKey = scope.question.$$hashKey.replace(/:/, '');
-            
+
             scope.requiredCheck = function() {
                 if(attributes.isrequired === 'true') {
                     return true;
@@ -18,12 +18,13 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                     return false;
                 }
             };
-            
+
             scope.isinValid = function() {
                 if(!scope.requiredCheck()) {
                     return false;
                 }
-                else if(scope.question.answers === undefined || scope.question.answers.length === 0) {
+                else if(scope.question.answers === undefined ||
+                        scope.question.answers.length === 0) {
                     return true;
                 }
                 else {

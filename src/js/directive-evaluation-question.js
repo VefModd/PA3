@@ -22,16 +22,12 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
             
             scope.isinValid = function() {
                 if(!scope.requiredCheck()) {
-                    //console.log("return false!");
                     return false;
                 }
-
-                if(scope.question.answers === undefined || scope.question.answers.length === 0) {
-                    //console.log("return true!");
+                else if(scope.question.answers === undefined || scope.question.answers.length === 0) {
                     return true;
                 }
                 else {
-                    //console.log("return false!");
                     return false;
                 }
 

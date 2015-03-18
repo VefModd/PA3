@@ -1,6 +1,6 @@
 <div class="form-group"
     ng-show="question.question.Type === 'text'"
-    ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
+    ng-class="{ 'has-error': isinValid()  && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
@@ -19,7 +19,7 @@
 
 <div class="form-group"
     ng-show="question.question.Type === 'single'"
-    ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
+    ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
@@ -31,12 +31,12 @@
             name="{{ question.$$hashKey }}"
             ng-model="question.answers"
             ng-required="requiredCheck()"
-            ng-click
             value="{{ answer.ID }}" /> {{ answer.Text }}
             <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
 
+<!--
 <div class="form-group"
     ng-show="question.question.Type === 'multiple'"
     ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
@@ -53,10 +53,10 @@
             ng-click="updateValue(answer, question)"
             ng-required="requiredCheck()"
             value="{{ answer.ID }}" /> {{ answer.Text }} - {{ question.answers.length }}
-            <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
-            <!--ng-required="requiredCheck() && question.answers.length === 0" -->
     </div>
 </div>
+-->
+
 
 <div>
     <button type="button" class="btn btn-lg btn-warning" ng-click="test()">TEST</button>

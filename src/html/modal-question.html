@@ -69,7 +69,7 @@
                 ng-class="{'has-error': newCourseQuestionForm.questionAnswers.$invalid && newCourseQuestionForm.$submitted}">
 
                 <label for="questionAnswers" class="control-label">
-                    The possible answers for the quesion:
+                    The possible answers for the question:
                 </label>
 
                 <ul class="list-group" ng-show="question.Answers.length != 0">
@@ -114,7 +114,7 @@
                     name="answerText"
                     ng-model="answer.Text"
                     required
-                    ng-maxlength="25"
+                    ng-maxlength="50"
                     ng-keyup="$event.keyCode == 13 && $scope.addAnswer()"
                     placeholder="Type the answer here.."
                     class="form-control" />

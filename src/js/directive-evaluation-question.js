@@ -8,7 +8,6 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
             scope.answerEvaluationForm = answerEvaluationForm;
-            console.log("answerEvaluationForm: ", scope.answerEvaluationForm);
             scope.question.$$hashKey = scope.question.$$hashKey.replace(/:/, '');
 
             scope.requiredCheck = function() {

@@ -3,7 +3,6 @@ angular.module('angularEvaluation').controller('ModalQuestionController', ['$sco
         $scope.typeOfQuestion = typeOfQuestion;
         $scope.showInputAnswer = false;
         $scope.question = {
-            //"ID": 0,
             "Text": "",
             "TextEN": "",
             "ImageURL": null,
@@ -16,7 +15,6 @@ angular.module('angularEvaluation').controller('ModalQuestionController', ['$sco
         };
 
         $scope.finish = function () {
-            console.log("inside finish");
             if($scope.question.Type !== 'text' &&
                     $scope.question.Type !== 'single' &&
                     $scope.question.Type !== 'multiple') {

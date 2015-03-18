@@ -197,14 +197,14 @@ describe('FrontPageTeacherController', function(){
                 $modal: $modal,
                 dispatchTeacher: mockDispatchTeacher
             });
-
+            spyOn($modal, 'open');
         });
 
         it('should succeed in retrieving the results', function() {
             // Act:
             $scope.getResultsById(1337);
             // Assert:
-            dump("NOT ASSERTING!: f-p-t-c.getResults" );
+            expect($modal.open).toHaveBeenCalled();
         });
 
         it('should fail in retrieving the results', function() {
@@ -212,7 +212,7 @@ describe('FrontPageTeacherController', function(){
             $scope.getResultsById(80085);
 
             // Assert:
-            dump("NOT ASSERTING!: f-p-t-c.getResults");
+            expect($modal.open).not.toHaveBeenCalled();
         });
     });
 

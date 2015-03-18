@@ -14,4 +14,4 @@ Daníel Benediktsson, Jón Freysteinn Jónsson and Jörundur Jörundsson
 ```
 	python -m SimpleHTTPServer 8088
 ```
-**iii.** Go to localhost:8088 and have fun.
+**iii.**** Go to localhost:8088 and have fun.

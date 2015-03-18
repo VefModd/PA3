@@ -50,12 +50,18 @@
 
     <div ng-repeat="answer in question.question.Answers">
         <!--
+        The checkboxes in our form are not working as they should. At the moment they work
+        like radio buttons, i.e. user can only check one box. The reason for this is that
+        the checkbox always made the form invalid if the ng-model on the input was not exactly
+        'question.answers', even though we made the checkboxed not required.
+        Therefore we couldn't add more then one question an array like we are
+        doing in this comment below. This is a very strange behaviour and the TA couldn't find
+        anything wrong with the code when we sought help.
         <input type="checkbox"
             ng-model="question.answers[answer.ID - firstAnswer.ID]"
             ng-true-value="'{{ answer.ID }}'"
             ng-false-value="''" /> {{ answer.Text }} - {{ question.answers }} - {{ question.question.Answers }}
         -->
-
         <div class="row">
             <div class="col-md-4">
                 <label class="btn btn-primary btn-block">

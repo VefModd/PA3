@@ -32,21 +32,6 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 }
             };
 
-            /*
-            scope.updateValue = function(answer, question) {
-                if(answer.checked) {
-                    question.answers.push(answer.ID);
-                } else {
-                    var index = 0;
-                    while(answer.ID !== question.answers[index]) {
-                        index++;
-                    }
-                    question.answers.splice(index, 1);
-                }
-                console.log("inside updateValue: ", question.answers);
-            };
-            */
-
             //scope.firstAnswer = scope.question.question.Answers[0];
         }
     };

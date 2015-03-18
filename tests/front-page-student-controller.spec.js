@@ -3,7 +3,8 @@ describe('FrontPageStudentController', function(){
 
     var $controller,
         dispatchStudent,
-        ok;
+        ok,
+        modalInstance;
 
     var mockDispatchStudent = {
         myCourses: function() {
@@ -54,9 +55,14 @@ describe('FrontPageStudentController', function(){
         }
     };
 
-    beforeEach(inject(function (_$controller_) {
+    beforeEach(inject(function (_$controller_, _$location_, _$modal_, _$route_){
         $controller = _$controller_;
+        $location = _$location_;
+        $modal = _$modal_;
+        $route = _$route_;
+        $scope = $rootScope.$new();
     }));
+
 
     describe('myCourses, myEvaluations SUCCESS', function(){
         var $scope, controller;
@@ -112,6 +118,55 @@ describe('FrontPageStudentController', function(){
             //Assert:
             expect($scope.myEvaluations.length).toBe(0);
             expect($scope.evalListFail).toBeDefined();
+        });
+    });
+
+
+    describe('answer', function() {
+        var fakeModal = {
+            result: {
+                then: function(confirmCallback) {
+                    var fakeAnswer = {
+                        courseName: 'CompSci',
+                        courseID: 1337,
+                        semester: '20141',
+                        evaluationID: 1234
+                    };
+                    confirmCallback(fakeAnswer);
+                }
+            },
+        };
+
+        beforeEach(function() {
+            spyOn($modal, 'open').and.returnValue(fakeModal);
+            spyOn($route, 'reload');
+
+            controller = $controller('FrontPageStudentController', {
+                $scope: $scope,
+                $modal: $modal,
+                dispatchStudent: mockDispatchStudent
+            });
+
+        });
+
+        it('should succeed in adding the answer', function() {
+            // Act:
+            $scope.answer('CompSci', 1337, '20141', 1234);
+
+            // Assert:
+            expect($scope.answer.courseID).toBe(1337);
+            expect($modal.open).toHaveBeenCalled();
+            //expect($route.reload).toHaveBeenCalled();
+        });
+
+        it('should fail in adding the template', function() {
+            // Act:
+            $scope.answer('blabla', 812, '12342', 4321);
+
+            // Assert:
+            expect($scope.evaluation.TemplateID).not.toBe(1337);
+            expect($modal.open).toHaveBeenCalled();
+            expect($route.reload).not.toHaveBeenCalled();
         });
     });
 });

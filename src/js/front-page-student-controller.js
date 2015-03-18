@@ -44,6 +44,16 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                                 }
                             }
                         });
+                        
+                        $scope.postAnswer = function(answer) {
+                            dispatchStudent.saveAnswer(courseID, semester, evaluationID, answer).
+                                success(function() {
+                                    console.log("postAnswer -SUCCESS!");
+                                }).
+                                error(function() {
+                                    console.log("postAnswer -ERROR!");
+                                });
+                        };
 
                         modalInstance.result.then(function(data) {
                             $scope.result = data;
@@ -52,21 +62,21 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                             for(var i = 0; i < $scope.result.CourseResult.length; i++) {
                                 if($scope.result.CourseResult[i].question.Type === 'multiple') {
                                     console.log("multiple");
-                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
-                                    console.log("TeacherSSN: ", undefined);
-                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
-                                }
-                                else if($scope.result.CourseResult[i].question.Type === 'single'){
-                                    console.log("single");
-                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
-                                    console.log("TeacherSSN: ", undefined);
-                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
+                                    var courseAnswerMult = {
+                                        QuestionID : $scope.result.CourseResult[i].question.ID,
+                                        TeacherSSN : undefined,
+                                        Value : $scope.result.CourseResult[i].answers
+                                    };
+                                    console.log("answer: ", courseAnswerMult);
                                 }
                                 else {
-                                    console.log("text");
-                                    console.log("QuestionID: ", $scope.result.CourseResult[i].question.ID);
-                                    console.log("TeacherSSN: ", undefined);
-                                    console.log("Value: ", $scope.result.CourseResult[i].answers);
+                                    console.log("single or text");
+                                    var courseAnswerSinglOrText = {
+                                        QuestionID : $scope.result.CourseResult[i].question.ID,
+                                        TeacherSSN : undefined,
+                                        Value : $scope.result.CourseResult[i].answers
+                                    };
+                                    console.log("answer: ", courseAnswerSinglOrText);
                                 }
                             }
 
@@ -75,21 +85,31 @@ angular.module('angularEvaluation').controller('FrontPageStudentController', ['$
                                 for(var k = 0; k < $scope.result.TeacherResult[j].teacherQuestions.length; k++) {
                                     if($scope.result.TeacherResult[j].teacherQuestions[k].question.Type === 'multiple') {
                                         console.log("multiple");
+                                        /*
                                         console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
                                         console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
                                         console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
-                                    }
-                                    else if($scope.result.TeacherResult[j].teacherQuestions[k].question.Type === 'single') {
-                                        console.log("single");
-                                        console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
-                                        console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
-                                        console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
+                                        */
+                                        var teacherAnswerMult = {
+                                            QuestionID : $scope.result.TeacherResult[j].teacherQuestions[k].question.ID,
+                                            TeacherSSN : $scope.result.TeacherResult[j].SSN,
+                                            Value : $scope.result.TeacherResult[j].teacherQuestions[k].answers
+                                        };
+                                        console.log("answer: ", teacherAnswerMult);
                                     }
                                     else {
-                                        console.log("text");
+                                        console.log("single or text");
+                                        /*
                                         console.log("QuestionID: ", $scope.result.TeacherResult[j].teacherQuestions[k].question.ID);
                                         console.log("TeacherSSN: ", $scope.result.TeacherResult[j].SSN);
                                         console.log("Value: ", $scope.result.TeacherResult[j].teacherQuestions[k].answers);
+                                        */
+                                        var teacherAnswerSinglOrText = {
+                                            QuestionID : $scope.result.TeacherResult[j].teacherQuestions[k].question.ID,
+                                            TeacherSSN : $scope.result.TeacherResult[j].SSN,
+                                            Value : $scope.result.TeacherResult[j].teacherQuestions[k].answers
+                                        };
+                                        console.log("answer: ", teacherAnswerSinglOrText);
                                     }
                                 }
                             }

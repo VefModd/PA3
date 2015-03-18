@@ -59,7 +59,7 @@ angular.module("angularEvaluation").directive("highchart", function() {
                         color: '#000000',
                         align: 'right',
                         format: '{point.y:.1f}', // one decimal
-                        y: -30,
+                        y: -30, 
                         style: {
                             fontSize: '13px',
                                 fontFamily: 'Verdana, sans-serif'

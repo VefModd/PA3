@@ -1,10 +1,10 @@
-# Angualr evaluation
+# Angular evaluation
 
 ## Authors
 Daníel Benediktsson, Jón Freysteinn Jónsson and Jörundur Jörundsson
 
 ##Setup
-1. Run the **setup.sh** script or equivalent commands to the ones below 
+1. Run the **setup.sh** script or equivalent commands to the ones below
 ```
 	npm install -d
 	bower install -d

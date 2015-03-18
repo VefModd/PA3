@@ -28,11 +28,14 @@
 
                         <div ng-repeat="question in course.Questions">
 
-                            <legend>
-                                {{ question.Text }} - {{ question.Type }} :
+                            <legend ng-if="question.TeacherSSN !== null">
+                                {{ question.Text }} - {{ question.TeacherSSN }}
                             </legend>
 
-                            <!-- SKOda TETTAE!! -->
+                            <legend ng-if="question.TeacherSSN === null">
+                                {{ question.Text }}
+                            </legend>
+
                             <div ng-show="question.Type === 'text'">
 
                                 <div ng-repeat="textResult in question.TextResults track by $index">

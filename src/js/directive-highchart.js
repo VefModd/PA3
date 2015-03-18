@@ -55,11 +55,11 @@ angular.module("angularEvaluation").directive("highchart", function() {
                     data: scope.data,
                     dataLabels: {
                         enabled: true,
-                        rotation: -90,
+                        rotation: 0,
                         color: '#000000',
-                        align: 'right',
-                        format: '{point.y:.1f}', // one decimal
-                        y: -30,
+                        align: 'center',
+                        format: '{point.y:,.0f}', // one decimal
+                        y: -10,
                         style: {
                             fontSize: '13px',
                                 fontFamily: 'Verdana, sans-serif'

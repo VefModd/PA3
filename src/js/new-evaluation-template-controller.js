@@ -1,7 +1,6 @@
 angular.module('angularEvaluation').controller('NewEvaluationTemplateController', ['$scope', '$modal', '$location', 'dispatchNewEvaluation',
     function($scope, $modal, $location, dispatchNewEvaluation) {
         $scope.evaluationTemplate = {
-            //"ID": 0,
             "Title": "",
             "TitleEN": "",
             "IntroText": "",
@@ -24,7 +23,6 @@ angular.module('angularEvaluation').controller('NewEvaluationTemplateController'
 
             modalInstance.result.then(function(data) {
                 $scope.evaluationTemplate.CourseQuestions.push(data);
-                console.log("the evaluation template: ", $scope.evaluationTemplate);
             });
         };
 
@@ -42,12 +40,10 @@ angular.module('angularEvaluation').controller('NewEvaluationTemplateController'
 
             modalInstance.result.then(function(data) {
                 $scope.evaluationTemplate.TeacherQuestions.push(data);
-                console.log("the evaluation template: ", $scope.evaluationTemplate);
             });
         };
 
         $scope.finishTemplate = function() {
-            console.log("Inside finish template function");
             if($scope.evaluationTemplate.CourseQuestions.length === 0 ||
                     $scope.evaluationTemplate.TeacherQuestions.length === 0) {
                 if($scope.evaluationTemplate.CourseQuestions.length === 0) {
@@ -68,15 +64,11 @@ angular.module('angularEvaluation').controller('NewEvaluationTemplateController'
             if($scope.templateForm.$valid) {
                 $scope.evaluationTemplate.TitleEN = $scope.evaluationTemplate.Title;
                 $scope.evaluationTemplate.IntroTextEN = $scope.evaluationTemplate.IntroText;
-                console.log("$scope.evaluationTemplate: ", $scope.evaluationTemplate);
                 dispatchNewEvaluation.newEvaluationTemplate($scope.evaluationTemplate).
                     success(function() {
-                        console.log("SUCCESS!");
                         $location.path('/front-page-teacher');
                     }).
                 error(function() {
-                    console.log("ERROR");
-                    // TODO ERROR MESSAGE
                     $scope.newEvaluationTemplateFail = true;
                 });
             }

@@ -3,7 +3,7 @@
         <div class="jumbotron">
             <h1>Welcome {{ data.User.FullName }}</h1>
             <p>
-            Hot baby yes!
+                This is the page where you can create a new evaluation template. You can also publish a new evaluation based on some template you created and see the results of open and closed evaluations. Enjoy!
             </p>
         </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
 
-            <div class="col-md-3 md-offset-1 pull-left">
+            <div class="col-md-3 md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         New evaluations:
@@ -30,14 +30,14 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'new'">
-                                {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
+                                {{ evaluation.TemplateTitle }}
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 md-offset-1 pull-left">
+            <div class="col-md-3 md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Open evaluations:
@@ -45,21 +45,23 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'open'">
-                                <button type="button"
-                                    class="btn btn-xs btn-primary pull-right"
-                                    ng-click="getResultsById(evaluation.ID)">
-                                    See results!
-                                </button>
-                                <p>
-                                    {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
-                                </p>
+                                <div class="row">
+                                    <button type="button"
+                                        class="btn btn-xs btn-primary col-md-6 pull-right"
+                                        ng-click="getResultsById(evaluation.ID)">
+                                        See results!
+                                    </button>
+                                    <p class="col-md-6">
+                                        {{ evaluation.TemplateTitle }}
+                                        </p>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Closed evaluations:
@@ -67,21 +69,23 @@
                     <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item" ng-repeat="evaluation in evaluations | isStatus: 'closed'">
-                                <button type="button"
-                                    class="btn btn-xs btn-primary pull-right"
-                                    ng-click="getResultsById(evaluation.ID)">
-                                    See results!
-                                </button>
-                                <p>
-                                    {{ evaluation.TemplateTitle }} - {{ evaluation.Status }}
-                                </p>
+                                <div class="row">
+                                    <button type="button"
+                                        class="btn btn-xs btn-primary col-md-6 pull-right"
+                                        ng-click="getResultsById(evaluation.ID)">
+                                        See results!
+                                    </button>
+                                    <p class="col-md-6">
+                                        {{ evaluation.TemplateTitle }}
+                                    </p>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 md-offset-1 pull-rigth">
+            <div class="col-md-3 md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Evaluation templates:
@@ -89,14 +93,16 @@
                     <div class="panel-body">
                         <ul class="list-group" ng-show="evaluationTemplates.length !== 0">
                             <li class="list-group-item" ng-repeat="evaluationTemplate in evaluationTemplates">
-                                <button type="button"
-                                    class="btn btn-xs btn-primary pull-right"
-                                    ng-click="newEvaluation(evaluationTemplate.ID)">
-                                    Publish!
-                                </button>
-                                <p>
-                                    {{ evaluationTemplate.Title }}
-                                </p>
+                                <div class="row">
+                                    <button type="button"
+                                        class="btn btn-xs btn-primary col-md-6 pull-right"
+                                        ng-click="newEvaluation(evaluationTemplate.ID)">
+                                        Publish!
+                                    </button>
+                                    <p class="col-md-6">
+                                        {{ evaluationTemplate.Title }}
+                                    </p>
+                                </div>
                             </li>
                         </ul>
                         <p ng-show="evaluationTemplates.length === 0">

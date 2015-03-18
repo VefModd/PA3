@@ -26,11 +26,17 @@
 
     <div ng-repeat="answer in question.question.Answers">
 
-        <input type="radio"
-            name="{{ question.$$hashKey }}"
-            ng-model="question.answers"
-            ng-required="requiredCheck()"
-            value="{{ answer.ID }}" /> {{ answer.Text }}
+        <div class="row">
+            <div class="col-md-4">
+                <label class="btn btn-primary btn-block">
+                    <input type="radio"
+                        name="{{ question.$$hashKey }}"
+                        ng-model="question.answers"
+                        ng-required="requiredCheck()"
+                        value="{{ answer.ID }}" /> {{ answer.Text }}
+                </label>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -50,10 +56,15 @@
             ng-false-value="''" /> {{ answer.Text }} - {{ question.answers }} - {{ question.question.Answers }}
         -->
 
-        <input type="checkbox"
-            ng-model="question.answers"
-            ng-true-value="'{{ answer.ID }}'"
-            /> {{ answer.Text }}
-
+        <div class="row">
+            <div class="col-md-4">
+                <label class="btn btn-primary btn-block">
+                    <input type="checkbox"
+                    ng-model="question.answers"
+                    ng-true-value="'{{ answer.ID }}'"
+                    /> {{ answer.Text }}
+                </label>
+            </label>
+        </div>
     </div>
 </div>

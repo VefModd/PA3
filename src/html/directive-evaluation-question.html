@@ -13,13 +13,12 @@
         ng-maxlength="100"
         ng-required="requiredCheck()"
         class="form-control">
-        <!--ng-required="requiredCheck()"-->
     </textarea>
 </div>
 
 <div class="form-group"
     ng-show="question.question.Type === 'single'"
-    ng-class="{ 'has-error': answerEvaluationForm.$invalid && answerEvaluationForm.$submitted }">
+    ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
@@ -32,32 +31,28 @@
             ng-model="question.answers"
             ng-required="requiredCheck()"
             value="{{ answer.ID }}" /> {{ answer.Text }}
-            <!-- ng-required="requiredCheck()" /> {{ answer.Text }} -->
     </div>
 </div>
 
-<!--
 <div class="form-group"
-    ng-show="question.question.Type === 'multiple'"
-    ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
+    ng-show="question.question.Type === 'multiple'">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}
     </label>
 
     <div ng-repeat="answer in question.question.Answers">
+        <!--
+        <input type="checkbox"
+            ng-model="question.answers[answer.ID - firstAnswer.ID]"
+            ng-true-value="'{{ answer.ID }}'"
+            ng-false-value="''" /> {{ answer.Text }} - {{ question.answers }} - {{ question.question.Answers }}
+        -->
 
         <input type="checkbox"
-            name="{{ question.$$hashKey }}"
-            ng-model="answer.checked"
-            ng-click="updateValue(answer, question)"
-            ng-required="requiredCheck()"
-            value="{{ answer.ID }}" /> {{ answer.Text }} - {{ question.answers.length }}
+            ng-model="question.answers"
+            ng-true-value="{{ answer.ID }}"
+            /> {{ answer.Text }}
+
     </div>
-</div>
--->
-
-
-<div>
-    <button type="button" class="btn btn-lg btn-warning" ng-click="test()">TEST</button>
 </div>

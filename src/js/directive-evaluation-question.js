@@ -7,7 +7,6 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
         },
         templateUrl: 'src/html/directive-evaluation-question.html',
         link: function(scope, element, attributes, answerEvaluationForm) {
-            //console.log("INSIDE DIRECTIVE! => scope.question: ", scope.question);
             scope.answerEvaluationForm = answerEvaluationForm;
             console.log("answerEvaluationForm: ", scope.answerEvaluationForm);
             scope.question.$$hashKey = scope.question.$$hashKey.replace(/:/, '');
@@ -112,6 +111,19 @@ angular.module("angularEvaluation").directive("evaluationQuestion", function() {
                 }
                 console.log("inside updateValue: ", question.answers);
             };
+            
+            scope.firstAnswer = scope.question.question.Answers[0];
+
+            /*
+            scope.$watch('question.answers', function() {
+                console.log("change!!");
+                angular.forEach(scope.question.answers, function(value, index) {
+                    console.log("flotT");
+                    if(value) scope.answers
+                });
+
+            }, true);
+            */
 
             scope.test = function() {
 

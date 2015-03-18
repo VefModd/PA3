@@ -21,7 +21,9 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        {{ course.CourseName }} - {{ course.CourseID }}
+                        <h1 class="panel-title">
+                            {{ course.CourseName }} - {{ course.CourseID }}
+                        </h1>
                     </div>
 
                     <div class="panel-body">
@@ -40,7 +42,7 @@
 
                                 <div ng-repeat="textResult in question.TextResults track by $index">
                                     <p ng-show="textResult !== ''">
-                                    <b>Answer: </b> {{ textResult }}
+                                        <b>Answer: </b> {{ textResult }}
                                     </p>
                                 </div>
 

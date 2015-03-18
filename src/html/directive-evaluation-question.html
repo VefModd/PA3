@@ -35,7 +35,8 @@
 </div>
 
 <div class="form-group"
-    ng-show="question.question.Type === 'multiple'">
+    ng-show="question.question.Type === 'multiple'"
+    ng-class="{ 'has-error': isinValid() && answerEvaluationForm.$submitted }">
 
     <label for="{{ question.$$hashKey }}" class="control-label">
         {{ question.question.Text }} - {{ question.question.ID }}

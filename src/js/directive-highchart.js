@@ -41,7 +41,7 @@ angular.module("angularEvaluation").directive("highchart", function() {
                 yAxis: {
                 min: 0,
                     title: {
-                        text: 'Number of student'
+                        text: 'Number of students'
                     }
                 },
                 legend: {

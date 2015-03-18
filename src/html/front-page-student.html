@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
-        <div class="col-md-6 md-offset-1 pull-left">
+        <div class="col-md-6 md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Your courses:
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 md-offset-1 pull-rigth">
+        <div class="col-md-6 md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Your evaluations:
@@ -37,14 +37,16 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="evaluation in evaluations">
-                            <button type="button"
-                                class="btn btn-xs btn-primary pull-right"
-                                ng-click="answer(evaluation.CourseName, evaluation.CourseID, evaluation.Semester, evaluation.ID)">
-                                Answer!
-                            </button>
-                            <p>
+                            <div class="row">
+                                <button type="button"
+                                    class="btn btn-xs btn-primary col-md-2 pull-right"
+                                    ng-click="answer(evaluation.CourseName, evaluation.CourseID, evaluation.Semester, evaluation.ID)">
+                                    Answer!
+                                </button>
+                                <p class="col-md-10">
                                 {{ evaluation.CourseID }} - {{ evaluation.CourseName }} - {{ evaluation.TemplateName }}
-                            </p>
+                                </p>
+                            </div>
                         </li>
                     </ul>
                 </div>
